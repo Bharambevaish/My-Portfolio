@@ -13,6 +13,7 @@ import Education from './components/Education'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import BackToTop from './components/BackToTop'
+import ChatBot from './components/ChatBot'
 import { ToastProvider } from './components/Toast'
 
 export default function App() {
@@ -37,6 +38,7 @@ export default function App() {
       </main>
       <Footer />
       <BackToTop />
+      <ChatBot />
     </ToastProvider>
   )
 }

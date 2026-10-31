@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { LuArrowUpRight, LuMousePointerClick } from 'react-icons/lu'
+import { SiGithub } from 'react-icons/si'
 import SectionHeading from './SectionHeading'
 import TiltCard from './TiltCard'
 import Icon from './Icon'
@@ -114,7 +115,22 @@ function ProjectCard({ project: p, onOpen }) {
       </div>
 
       <div className="relative mt-7 flex items-center justify-between border-t border-zinc-100 pt-5 text-sm dark:border-zinc-800">
-        <span className="flex items-center gap-2 text-zinc-500"><LuMousePointerClick /> View case study</span>
+        <div className="flex items-center gap-2">
+          <span className="hidden items-center gap-2 text-zinc-500 sm:flex"><LuMousePointerClick /> Case study</span>
+          {p.links.github && (
+            <a href={p.links.github} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} aria-label={`${p.title} source code on GitHub`}
+              className="ml-1 inline-flex items-center gap-1.5 rounded-full border border-zinc-200 px-3 py-1.5 text-xs font-medium transition hover:-translate-y-0.5 hover:border-zinc-900 dark:border-zinc-700 dark:hover:border-white">
+              <SiGithub /> Code
+            </a>
+          )}
+          {p.links.live && (
+            <a href={p.links.live} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} aria-label={`${p.title} live demo`}
+              className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500 px-3 py-1.5 text-xs font-medium text-white transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-emerald-500/30">
+              <span className="relative flex h-1.5 w-1.5"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" /><span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-white" /></span>
+              Live demo
+            </a>
+          )}
+        </div>
         <span className="grid h-10 w-10 place-items-center rounded-full bg-zinc-900 text-white transition-transform duration-500 group-hover:rotate-45 dark:bg-white dark:text-zinc-900">
           <LuArrowUpRight />
         </span>

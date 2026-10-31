@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { LuX, LuCheck, LuArrowRight } from 'react-icons/lu'
+import { LuX, LuCheck, LuArrowRight, LuExternalLink } from 'react-icons/lu'
 import { SiGithub } from 'react-icons/si'
 import Icon from './Icon'
 
@@ -128,13 +128,19 @@ export default function ProjectModal({ project: p, onClose }) {
             </div>
           </motion.div>
 
-          {p.links.github && (
+          {(p.links.github || p.links.live) && (
             <motion.div variants={item} className="flex flex-wrap gap-3 border-t border-zinc-100 pt-6 dark:border-zinc-800">
-              <a href={p.links.github} target="_blank" rel="noreferrer"
+              {p.links.live && (
+                <a href={p.links.live} target="_blank" rel="noreferrer"
+                  className="group inline-flex items-center gap-2 rounded-full bg-emerald-500 px-5 py-3 text-sm font-medium text-white transition hover:-translate-y-0.5 hover:shadow-lg hover:shadow-emerald-500/30">
+                  <LuExternalLink /> Try the live demo
+                </a>
+              )}
+              {p.links.github && <a href={p.links.github} target="_blank" rel="noreferrer"
                 className="group inline-flex items-center gap-2 rounded-full bg-zinc-900 px-5 py-3 text-sm font-medium text-white transition hover:-translate-y-0.5 hover:shadow-lg dark:bg-white dark:text-zinc-900">
                 <SiGithub /> View code on GitHub
                 <LuArrowRight className="transition-transform group-hover:translate-x-1" />
-              </a>
+              </a>}
             </motion.div>
           )}
         </motion.div>

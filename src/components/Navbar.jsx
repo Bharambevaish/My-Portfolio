@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { LuMenu, LuX, LuSun, LuMoon } from 'react-icons/lu'
+import { LuMenu, LuX, LuSun, LuMoon, LuMessageSquare } from 'react-icons/lu'
 import useTheme from '../hooks/useTheme'
 import useActiveSection from '../hooks/useActiveSection'
 import { profile } from '../data/portfolio'
@@ -91,9 +91,10 @@ export default function Navbar() {
           </button>
           <a
             href="#contact"
-            className="hidden rounded-xl bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:-translate-y-0.5 hover:shadow-lg sm:block dark:bg-white dark:text-zinc-900"
+            className="group hidden items-center gap-2 rounded-xl bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition hover:-translate-y-0.5 hover:shadow-lg sm:flex dark:bg-white dark:text-zinc-900"
           >
-            Hire me
+            <LuMessageSquare className="transition-transform duration-300 group-hover:-rotate-12" />
+            Let's talk
           </a>
           <button
             onClick={() => setOpen((o) => !o)}

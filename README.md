@@ -26,6 +26,8 @@ Personal portfolio of **Vaishnavi Bharambe**, a B.Tech Information Technology st
 - A timeline that draws itself as you scroll
 - An infinite skills marquee and counters that animate up
 - Magnetic buttons, toast notifications and copy-to-clipboard email
+- A FAQ chatbot (bottom right) that answers common questions about me, running fully in the browser with no API key
+- Live demo and source code buttons on every project
 - Light and dark mode that remembers your choice
 - Fully responsive, keyboard accessible and respects "reduce motion"
 
@@ -38,7 +40,8 @@ My-Portfolio/
 │   └── favicon.svg
 ├── src/
 │   ├── data/
-│   │   └── portfolio.js           # ← ALL content lives here (edit this to update the site)
+│   │   ├── portfolio.js           # ← ALL content lives here (edit this to update the site)
+│   │   └── chatbot.js             # chatbot questions, keywords and answers
 │   ├── hooks/
 │   │   ├── useTheme.js            # light/dark mode
 │   │   └── useActiveSection.js    # highlights the current nav link
@@ -53,6 +56,7 @@ My-Portfolio/
 │   │   ├── Skills.jsx             # marquee + skill groups
 │   │   ├── Education.jsx          # education & certifications
 │   │   ├── Contact.jsx            # contact cards + message form
+│   │   ├── ChatBot.jsx            # floating FAQ assistant
 │   │   ├── Footer.jsx, BackToTop.jsx
 │   │   └── (shared) Reveal, SectionHeading, TiltCard, Magnetic, Counter,
 │   │       Typewriter, Toast, Icon, ScrollProgress, CursorGlow
