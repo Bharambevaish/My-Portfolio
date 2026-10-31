@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vaishnavi Bharambe Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Layout idea: a data notebook. Big serif statements on the left, monospace "outputs" on the right. */
+  --paper:#f6f7fb;
+  --surface:#ffffff;
+  --ink:#151a2d;
+  --muted:#5b6380;
+  --line:#dde1ee;
+  --accent:#2b44c9;
+  --accent-soft:#e6e9fb;
+  --warm:#c9781a;
+  --draft:#a3471f;
+  --draft-bg:#fff3ea;
+  --display:"Instrument Serif", Georgia, "Times New Roman", serif;
+  --body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0f1220; --surface:#171b2e; --ink:#e8eaf4; --muted:#9aa1bd; --line:#2a3050;
+    --accent:#8c9cff; --accent-soft:#232a52; --warm:#e9a24a; --draft:#ffb38a; --draft-bg:#3a2418;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0f1220; --surface:#171b2e; --ink:#e8eaf4; --muted:#9aa1bd; --line:#2a3050;
+  --accent:#8c9cff; --accent-soft:#232a52; --warm:#e9a24a; --draft:#ffb38a; --draft-bg:#3a2418;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3{text-wrap:balance;margin:0}
+.mono{font-family:var(--mono)}
+
+/* nav */
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px}
+nav .brand{font-family:var(--mono);font-size:14px;color:var(--ink);text-decoration:none}
+nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;font-size:14px}
+nav ul a{color:var(--muted);text-decoration:none}
+nav ul a:hover{color:var(--ink)}
+@media (max-width:640px){nav ul{display:none}}
+
+/* draft notes */
+.draft{display:inline-flex;gap:6px;align-items:baseline;font-family:var(--mono);font-size:12px;color:var(--draft);background:var(--draft-bg);border:1px dashed var(--draft);border-radius:6px;padding:2px 8px;line-height:1.5}
+.draft::before{content:"TO ADD"; font-weight:500; white-space:nowrap; flex-shrink:0}
+
+/* hero */
+.hero{padding:72px 0 56px;display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center}
+@media (max-width:860px){.hero{grid-template-columns:1fr;padding-top:48px}}
+.eyebrow{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.02em}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(48px,8vw,92px);line-height:.98;letter-spacing:-.01em;margin:14px 0 20px}
+.hero h1 em{color:var(--accent)}
+.hero p.lede{font-size:19px;color:var(--muted);max-width:34em;margin:0 0 28px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;font-size:15px;font-weight:500;text-decoration:none;border:1px solid var(--ink);color:var(--ink)}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn:hover{transform:translateY(-1px)}
+@media (prefers-reduced-motion:reduce){.btn:hover{transform:none}}
+
+.cell{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 10px 30px -18px rgba(20,30,80,.35)}
+.cell-head{display:flex;gap:10px;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:12px;color:var(--muted)}
+.cell-head b{color:var(--accent);font-weight:500}
+.cell pre{margin:0;padding:16px 18px;font-family:var(--mono);font-size:13px;line-height:1.75;overflow-x:auto;color:var(--ink)}
+.k{color:var(--muted)} .v{color:var(--ink)} .n{color:var(--warm)} .s{color:var(--accent)}
+
+/* sections */
+section{padding:64px 0;border-top:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:180px 1fr;gap:32px;margin-bottom:32px;align-items:baseline}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr;gap:6px}}
+.sec-head .idx{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.sec-head h2{font-family:var(--display);font-weight:400;font-size:clamp(34px,4.5vw,48px);line-height:1.05}
+.body-col{margin-left:212px}
+@media (max-width:760px){.body-col{margin-left:0}}
+.body-col p{max-width:62ch;margin:0 0 16px}
+
+/* projects */
+.projects{display:grid;gap:20px}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:28px;display:grid;grid-template-columns:1.2fr 1fr;gap:32px}
+@media (max-width:860px){.proj{grid-template-columns:1fr}}
+.proj .tag{font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.status{padding:1px 8px;border-radius:999px;border:1px solid currentColor;font-size:11px}
+.status.done{color:var(--accent)} .status.wip{color:var(--warm)}
+.proj h3{font-family:var(--display);font-weight:400;font-size:32px;line-height:1.1;margin:10px 0 12px}
+.proj p{margin:0 0 14px;color:var(--muted);max-width:60ch}
+.proj ul{margin:0 0 16px;padding-left:18px}
+.proj li{margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+.chips li{font-family:var(--mono);font-size:12px;padding:3px 9px;border-radius:6px;background:var(--accent-soft);color:var(--ink);margin:0}
+.links{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-size:14px;font-weight:500}
+
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-content:start}
+.stat{border:1px solid var(--line);border-radius:10px;padding:14px}
+.stat .num{font-family:var(--display);font-size:38px;line-height:1;font-variant-numeric:tabular-nums}
+.stat .lab{font-size:13px;color:var(--muted);margin-top:6px}
+
+.weights{border:1px solid var(--line);border-radius:10px;padding:16px;grid-column:1/-1}
+.weights .title{font-family:var(--mono);font-size:12px;color:var(--muted);margin-bottom:10px}
+.wrow{display:grid;grid-template-columns:120px 1fr 38px;gap:10px;align-items:center;font-size:13px;margin-bottom:6px}
+.bar{height:8px;border-radius:4px;background:var(--accent-soft);overflow:hidden}
+.bar span{display:block;height:100%;background:var(--accent);border-radius:4px}
+.wrow .pct{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;color:var(--muted)}
+
+.pipeline{display:flex;flex-direction:column;gap:8px;font-family:var(--mono);font-size:13px}
+.pipeline div{border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:flex;justify-content:space-between;gap:10px}
+.pipeline div span:last-child{color:var(--muted)}
+
+/* experience / timeline */
+.timeline{display:grid;gap:0}
+.titem{display:grid;grid-template-columns:180px 1fr;gap:32px;padding:22px 0;border-bottom:1px solid var(--line)}
+.titem:last-child{border-bottom:0}
+@media (max-width:760px){.titem{grid-template-columns:1fr;gap:4px}}
+.titem .when{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.titem h3{font-size:19px;font-weight:600}
+.titem .org{color:var(--muted);margin:2px 0 10px}
+.titem p,.titem ul{margin:0 0 10px;max-width:62ch}
+.titem ul{padding-left:18px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.skill{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
+.skill h3{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--muted);margin-bottom:12px}
+
+/* contact */
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.contact .c{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
+.contact .c .lab{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.contact .c .val{font-size:15px;word-break:break-all;margin-top:4px}
+footer{padding:32px 0 48px;color:var(--muted);font-size:13px;font-family:var(--mono)}
+
+/* load sequence */
+@media (prefers-reduced-motion:no-preference){
+  .hero > *{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  .hero > *:nth-child(2){animation-delay:.15s}
+  @keyframes rise{from{transform:translateY(12px);opacity:.01}to{transform:none;opacity:1}}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">vaishnavi.bharambe</a>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main id="top" class="wrap">
+
+  <header class="hero">
+    <div>
+      <div class="eyebrow">B.Tech Information Technology · Walchand College of Engineering, Sangli</div>
+      <h1>Vaishnavi Bharambe turns <em>data</em> into decisions.</h1>
+      <p class="lede">I'm an IT undergraduate (class of 2027) who builds data analysis and machine learning projects, from customer segmentation for a bank dataset to an AI assistant that answers questions from your documents. I'm looking for roles in data analysis and AI.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">See my projects</a>
+        <a class="btn" href="https://github.com/Bharambevaish">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/vaishnavi-bharambe-646783293/">LinkedIn</a>
+      </div>
+      <p style="margin-top:18px"><span class="draft">Resume PDF link (Google Drive / GitHub) for a "Download resume" button</span></p>
+    </div>
+
+    <div class="cell" aria-label="Profile summary in data notebook style">
+      <div class="cell-head"><b>In [1]:</b> vaishnavi.describe()</div>
+<pre><span class="k">role       </span> <span class="s">"Data &amp; AI aspirant"</span>
+<span class="k">degree     </span> <span class="v">B.Tech IT, 2023–2027</span>
+<span class="k">cgpa       </span> <span class="n">8.5</span>
+<span class="k">internship </span> <span class="v">Siemens, Summer 2026</span>
+<span class="k">scholar    </span> <span class="v">Siemens Scholar, Batch 11</span>
+<span class="k">languages  </span> <span class="s">["Python", "SQL", "C"]</span>
+<span class="k">focus      </span> <span class="s">["analytics", "ML", "RAG"]</span>
+<span class="k">open_to    </span> <span class="v">Data analyst · AI roles</span>
+<span class="k">dtype: </span><span class="v">curious</span></pre>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="sec-head"><span class="idx">01 / About</span><h2>A short introduction</h2></div>
+    <div class="body-col">
+      <p>I'm in my final years of a B.Tech in Information Technology at Walchand College of Engineering, Sangli, and I'm a Siemens Scholar (Batch 11) under the Siemens Scholarship Program. This summer I interned with the cybersecurity team at Siemens, where most of my work was building reports and automating workflows with Excel, Power BI, SharePoint and Power Automate.</p>
+      <p>Outside coursework I build end-to-end projects in Python: cleaning and exploring data, engineering scores and clusters, and turning the results into recommendations people can act on. Right now I'm extending that into AI, with a retrieval-augmented generation (RAG) assistant.</p>
+      <p><span class="draft">2–3 lines in your own voice: what excites you about data/AI, and anything personal (hobbies, where you're from)</span></p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head"><span class="idx">02 / Projects</span><h2>Things I've built</h2></div>
+    <div class="projects">
+
+      <!-- Fintech -->
+      <article class="proj">
+        <div>
+          <div class="tag"><span class="status done">Completed</span><span>Data analysis · Machine learning</span></div>
+          <h3>High-Value Customer Identification for a Fintech Bank</h3>
+          <p>Which of 10,000 bank customers are worth the most today, and which ones could be worth more tomorrow? I built a weighted Customer Value Score and a K-Means segmentation to answer both.</p>
+          <ul>
+            <li>Explored a 26-column Customer 360 dataset (no missing values or duplicates) and found strong links between income and spend (r = 0.75), balance (0.71) and investment (0.71).</li>
+            <li>Clustered customers with K-Means (k = 4) on 12 standardised features into Standard, Silver, Gold and Premium; the model agreed with existing Premium labels 94.5% of the time.</li>
+            <li>Flagged 292 top-10%-income customers who weren't Premium, and ranked 1,338 low-value, high-potential customers into High, Medium and Low priority with an action for each.</li>
+          </ul>
+          <ul class="chips">
+            <li>Python</li><li>Pandas</li><li>NumPy</li><li>scikit-learn</li><li>Matplotlib</li><li>Seaborn</li><li>Excel</li>
+          </ul>
+          <div class="links"><a href="https://github.com/Bharambevaish/Fintech-Customer-Segmentation">View code on GitHub →</a></div>
+        </div>
+        <div class="stats">
+          <div class="stat"><div class="num">11%</div><div class="lab">of customers are Premium…</div></div>
+          <div class="stat"><div class="num">30.5%</div><div class="lab">…but drive this share of monthly spend</div></div>
+          <div class="stat"><div class="num">10,000</div><div class="lab">customers analysed</div></div>
+          <div class="stat"><div class="num">1,338</div><div class="lab">high-potential customers prioritised</div></div>
+          <div class="weights">
+            <div class="title">Customer Value Score: weight per dimension</div>
+            <div class="wrow"><span>Financial strength</span><div class="bar"><span style="width:100%"></span></div><span class="pct">25%</span></div>
+            <div class="wrow"><span>Transactions</span><div class="bar"><span style="width:60%"></span></div><span class="pct">15%</span></div>
+            <div class="wrow"><span>Spending</span><div class="bar"><span style="width:60%"></span></div><span class="pct">15%</span></div>
+            <div class="wrow"><span>Credit</span><div class="bar"><span style="width:60%"></span></div><span class="pct">15%</span></div>
+            <div class="wrow"><span>Engagement</span><div class="bar"><span style="width:40%"></span></div><span class="pct">10%</span></div>
+            <div class="wrow"><span>Relationship</span><div class="bar"><span style="width:40%"></span></div><span class="pct">10%</span></div>
+            <div class="wrow"><span>Future potential</span><div class="bar"><span style="width:40%"></span></div><span class="pct">10%</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- DocuMind -->
+      <article class="proj">
+        <div>
+          <div class="tag"><span class="status wip">In progress</span><span>AI · LLM · RAG</span></div>
+          <h3>DocuMind: an AI assistant for your documents</h3>
+          <p>A retrieval-augmented generation (RAG) assistant: upload documentation, ask a question in plain English, and get an answer grounded in the relevant passages instead of the model's guesswork.</p>
+          <p><span class="draft">Tech stack (LLM, embeddings, vector DB, UI), what's working so far, and a demo link or screenshot</span></p>
+          <div class="links"><a href="https://github.com/Bharambevaish/documind-rag">View code on GitHub →</a></div>
+        </div>
+        <div class="pipeline" aria-label="How a RAG pipeline works">
+          <div><span>1. Load &amp; chunk documents</span><span>ingest</span></div>
+          <div><span>2. Embed chunks into vectors</span><span>index</span></div>
+          <div><span>3. Retrieve top matches for a question</span><span>search</span></div>
+          <div><span>4. LLM answers from retrieved context</span><span>generate</span></div>
+        </div>
+      </article>
+
+      <!-- Legal -->
+      <article class="proj">
+        <div>
+          <div class="tag"><span class="status done">Completed</span><span>NLP · Legal AI</span></div>
+          <h3>AI for Legal Case Outcome Prediction</h3>
+          <p>A web app that reads the text of an Indian legal case and predicts its likely outcome, using InLegalBERT, a language model pre-trained on Indian legal documents.</p>
+          <p><span class="draft">Dataset used, accuracy / F1 score, your role (solo or team), and GitHub link</span></p>
+          <ul class="chips"><li>Python</li><li>InLegalBERT</li><li>Streamlit</li><li>Supabase</li></ul>
+        </div>
+        <div class="pipeline" aria-label="App flow">
+          <div><span>Case text in</span><span>input</span></div>
+          <div><span>InLegalBERT model</span><span>predict</span></div>
+          <div><span>Outcome shown in Streamlit</span><span>UI</span></div>
+          <div><span>Records stored in Supabase</span><span>DB</span></div>
+        </div>
+      </article>
+
+      <!-- SafeLinker -->
+      <article class="proj">
+        <div>
+          <div class="tag"><span class="status done">Completed</span><span>Security · Machine learning</span></div>
+          <h3>SafeLinker: phishing URL detection</h3>
+          <p>A tool that checks whether a URL is likely to be a phishing link.</p>
+          <p><span class="draft">How it works (features / model), results, tech stack, GitHub link, or tell me to drop this project</span></p>
+        </div>
+        <div></div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head"><span class="idx">03 / Experience</span><h2>Where I've worked</h2></div>
+    <div class="timeline">
+      <div class="titem">
+        <div class="when">Jun – Jul 2026</div>
+        <div>
+          <h3>Cybersecurity Summer Intern</h3>
+          <div class="org">Siemens</div>
+          <ul>
+            <li>Built data analysis and reporting for the team with Excel pivot tables and Power BI dashboards.</li>
+            <li>Automated workflows with Power Automate and organised team content in SharePoint.</li>
+            <li>Learned the foundations of security practice, including Zero Trust and CVSS-based vulnerability management.</li>
+          </ul>
+          <p><span class="draft">One concrete result: what a dashboard tracked, or time saved by an automation</span></p>
+        </div>
+      </div>
+      <div class="titem">
+        <div class="when">Batch 11</div>
+        <div>
+          <h3>Siemens Scholar</h3>
+          <div class="org">Siemens Scholarship Program</div>
+          <p>Selected for the Siemens Scholarship Program, which supports engineering students with merit-based scholarships and mentoring.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head"><span class="idx">04 / Skills</span><h2>What I work with</h2></div>
+    <div class="skills">
+      <div class="skill"><h3>languages</h3><ul class="chips"><li>Python</li><li>SQL</li><li>C</li></ul></div>
+      <div class="skill"><h3>data &amp; ml</h3><ul class="chips"><li>Pandas</li><li>NumPy</li><li>scikit-learn</li><li>K-Means</li><li>Feature scaling</li><li>EDA</li></ul></div>
+      <div class="skill"><h3>ai &amp; nlp</h3><ul class="chips"><li>RAG</li><li>LLMs</li><li>InLegalBERT</li><li>Transformers</li></ul></div>
+      <div class="skill"><h3>visualisation &amp; bi</h3><ul class="chips"><li>Power BI</li><li>Excel pivot tables</li><li>Matplotlib</li><li>Seaborn</li></ul></div>
+      <div class="skill"><h3>tools &amp; apps</h3><ul class="chips"><li>Streamlit</li><li>Supabase</li><li>Power Automate</li><li>SharePoint</li><li>Git &amp; GitHub</li></ul></div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="sec-head"><span class="idx">05 / Education</span><h2>Education &amp; certifications</h2></div>
+    <div class="timeline">
+      <div class="titem">
+        <div class="when">2023 – 2027</div>
+        <div><h3>B.Tech, Information Technology</h3><div class="org">Walchand College of Engineering, Sangli · CGPA 8.5</div></div>
+      </div>
+      <div class="titem">
+        <div class="when">HSC (12th)</div>
+        <div><h3>Maharashtra State Board · 94.83%</h3><div class="org">Shri Samarth Junior College, Akola</div></div>
+      </div>
+      <div class="titem">
+        <div class="when">SSC (10th)</div>
+        <div><h3>Maharashtra State Board · 79.60%</h3><div class="org"><span class="draft">School name</span></div></div>
+      </div>
+      <div class="titem">
+        <div class="when">Apr 2026</div>
+        <div><h3>Data Science and Applied Maths</h3><div class="org">Techademy Learning Solutions · 40 hours</div></div>
+      </div>
+      <div class="titem">
+        <div class="when">More</div>
+        <div><span class="draft">Other certifications, hackathons, clubs, positions of responsibility or awards</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="sec-head"><span class="idx">06 / Contact</span><h2>Let's talk</h2></div>
+    <div class="contact">
+      <div class="c"><div class="lab">email</div><div class="val"><a href="mailto:vaishnavibharambe99@gmail.com">vaishnavibharambe99@gmail.com</a></div></div>
+      <div class="c"><div class="lab">github</div><div class="val"><a href="https://github.com/Bharambevaish">github.com/Bharambevaish</a></div></div>
+      <div class="c"><div class="lab">linkedin</div><div class="val"><a href="https://www.linkedin.com/in/vaishnavi-bharambe-646783293/">linkedin.com/in/vaishnavi-bharambe</a></div></div>
+      <div class="c"><div class="lab">location</div><div class="val"><span class="draft">City, and open to relocate?</span></div></div>
+    </div>
+  </section>
+
+</main>
+
+<footer><div class="wrap">© 2026 Vaishnavi Bharambe · Built with Python-flavoured curiosity</div></footer>
+</body>
+</html>
