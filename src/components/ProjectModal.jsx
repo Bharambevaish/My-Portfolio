@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { LuX, LuCheck, LuArrowRight, LuExternalLink } from 'react-icons/lu'
+import { LuX, LuCheck, LuArrowRight, LuExternalLink, LuUsers } from 'react-icons/lu'
 import { SiGithub } from 'react-icons/si'
 import Icon from './Icon'
 
@@ -59,6 +59,18 @@ export default function ProjectModal({ project: p, onClose }) {
         </div>
 
         <motion.div variants={stagger} initial="hidden" animate="show" className="space-y-9 px-8 py-8">
+          {p.team && (
+            <motion.div variants={item} className="flex gap-4 rounded-2xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-800/40">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent"><LuUsers /></span>
+              <div className="text-sm leading-relaxed">
+                <div className="font-semibold">{p.team.label}</div>
+                <div className="text-zinc-600 dark:text-zinc-400">Team: {p.team.members}</div>
+                <div className="text-zinc-600 dark:text-zinc-400">Guide: {p.team.guide}</div>
+                <div className="text-zinc-500">{p.team.place}</div>
+              </div>
+            </motion.div>
+          )}
+
           <motion.div variants={item}>
             <h4 className="mb-2 font-mono text-xs uppercase tracking-widest text-zinc-500">The problem</h4>
             <p className="leading-relaxed text-zinc-700 dark:text-zinc-300">{p.problem}</p>

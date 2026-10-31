@@ -75,7 +75,7 @@ const intents = [
     id: 'legal',
     keywords: ['legal', 'law', 'court', 'case', 'judgment', 'inlegalbert', 'bert', 'shap', 'explainable', 'nlp'],
     reply: () => ({
-      text: `AI for Legal Case Outcome Prediction reads Indian court judgment PDFs and uses fine-tuned InLegalBERT models to predict the jurisdiction and the appellate outcome (allowed or dismissed).\n\nLong texts are split into overlapping 512-token chunks, and SHAP highlights the phrases that drove each prediction. It reached 85.2% accuracy and 83.7% F1, versus 62% for a TF-IDF + SVM baseline.`,
+      text: `AI for Legal Case Outcome Prediction reads Indian court judgment PDFs and uses fine-tuned InLegalBERT models to predict the jurisdiction and the appellate outcome (allowed or dismissed).\n\nLong texts are split into overlapping 512-token chunks, and SHAP highlights the phrases that drove each prediction. It reached 85.2% accuracy and 83.7% F1, versus 62% for a TF-IDF + SVM baseline.\n\nIt's a team project (Group F, Project IV) at Walchand College of Engineering with Ankita Kamble and Shrutika Pagare, guided by Dr. Shefali Sonavane.`,
       links: [{ label: 'Source code', href: gh('legal') }],
       chips: ['SafeLinker', 'Show me her projects'],
     }),

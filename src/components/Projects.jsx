@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { LuArrowUpRight, LuMousePointerClick } from 'react-icons/lu'
+import { LuArrowUpRight, LuMousePointerClick, LuUsers } from 'react-icons/lu'
 import { SiGithub } from 'react-icons/si'
 import SectionHeading from './SectionHeading'
 import TiltCard from './TiltCard'
@@ -96,6 +96,11 @@ function ProjectCard({ project: p, onOpen }) {
         <div className="font-mono text-xs uppercase tracking-widest text-zinc-500">{p.category}</div>
         <h3 className="mt-2 text-2xl font-semibold tracking-tight">{p.title}</h3>
         <p className="mt-1 font-serif text-lg italic text-zinc-500">{p.subtitle}</p>
+        {p.team && (
+          <span className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-zinc-200 px-2.5 py-1 text-xs text-zinc-500 dark:border-zinc-700">
+            <LuUsers /> {p.team.label}
+          </span>
+        )}
         <p className="mt-4 leading-relaxed text-zinc-600 dark:text-zinc-400">{p.summary}</p>
       </div>
 

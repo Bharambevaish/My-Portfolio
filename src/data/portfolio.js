@@ -110,6 +110,12 @@ export const projects = [
     title: 'Legal Case Outcome Prediction',
     subtitle: 'NLP for Indian law',
     category: 'NLP · Explainable AI',
+    team: {
+      label: 'Team project · Group F, Project IV',
+      members: 'Ankita Kamble, Vaishnavi Bharambe, Shrutika Pagare',
+      guide: 'Dr. Shefali Sonavane',
+      place: 'Dept. of Information Technology, Walchand College of Engineering, Sangli (2026–27)',
+    },
     status: 'Completed',
     icon: 'scale',
     accent: 'from-amber-500/20 to-orange-500/10',
