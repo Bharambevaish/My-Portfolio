@@ -122,9 +122,9 @@ export const projects = [
     summary:
       'Upload an Indian court judgment and a fine-tuned InLegalBERT model predicts its jurisdiction and appellate outcome, with SHAP showing which phrases drove the decision.',
     metrics: [
-      { value: '85.2%', label: 'accuracy' },
-      { value: '83.7%', label: 'F1-score' },
-      { value: '62%', label: 'TF-IDF baseline' },
+      { value: '89.7%', label: 'case-type acc.' },
+      { value: '71.6%', label: 'outcome acc.' },
+      { value: '120', label: 'SC cases tested' },
     ],
     problem:
       'Court judgments are long, unstructured PDFs, far beyond what a standard transformer can read at once. Deep learning predictions are also a "black box", which is hard to trust in law.',
@@ -132,11 +132,13 @@ export const projects = [
       'Parses judgment PDFs with PyMuPDF and regex to strip administrative metadata (coram, headers) and keep the legal facts.',
       'Slices long texts (over 4,000 words) into overlapping 512-token chunks so nothing is lost to token limits.',
       'Runs a dual-inference pipeline: fine-tuned InLegalBERT models predict jurisdiction (civil, criminal, constitutional) and outcome (allowed or dismissed) with a confidence score.',
+      'Hosts the fine-tuned checkpoints on Hugging Face (vaishnavi1011/legal-case-outcome-predictor), pulled automatically on first run.',
       'Uses SHAP to compute each token\'s contribution and render a visual heatmap of the decision drivers.',
     ],
     results: [
-      'Fine-tuned InLegalBERT reached 85.2% accuracy, 84.1% precision and 83.7% F1-score.',
-      'Beat a TF-IDF + SVM baseline, which scored 62.0% accuracy.',
+      'Case type (civil, criminal, constitutional): 89.7% validation accuracy, F1 0.895, after 3 epochs of fine-tuning.',
+      'Case outcome (allowed or dismissed): 71.6% validation accuracy, F1 0.764.',
+      'On a separate benchmark of 120 Supreme Court judgments: 76.7% accuracy on case type and 67.5% on outcome.',
       'Streamlit dashboard with drag-and-drop upload, prediction with confidence, and a SHAP force plot.',
     ],
     pipeline: ['PDF upload', 'Clean & chunk', 'InLegalBERT', 'SHAP', 'Dashboard'],
