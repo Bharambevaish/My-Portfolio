@@ -2,7 +2,7 @@
 
 Personal portfolio of **Vaishnavi Bharambe**, a B.Tech Information Technology student at Walchand College of Engineering, Sangli, building data analysis and AI projects.
 
-🔗 **Live:** https://bharambevaish.github.io/My-Portfolio/
+🔗 **Live:** https://vaishnavibharambe.me
 
 ## Tech stack
 
