@@ -8,7 +8,7 @@ export default function Education() {
   return (
     <section id="education" className="relative px-6 py-28">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading index="05" eyebrow="Education" title="Education" />
+        <SectionHeading icon="education" eyebrow="Education" title="Education" />
 
         <div className="md:ml-[220px]">
           <div className="space-y-4">

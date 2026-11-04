@@ -14,7 +14,7 @@ export default function Experience() {
   return (
     <section id="experience" className="relative px-6 py-28">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading index="03" eyebrow="Experience" title="Where I've worked" />
+        <SectionHeading icon="experience" eyebrow="Experience" title="Where I've worked" />
 
         <div ref={ref} className="relative md:ml-[220px]">
           {/* timeline line that draws itself as you scroll */}

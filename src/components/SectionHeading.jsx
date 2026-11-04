@@ -1,20 +1,36 @@
 import { motion } from 'framer-motion'
+import {
+  LuUser, LuLayers, LuBriefcase, LuWrench, LuGraduationCap, LuAward, LuSend,
+} from 'react-icons/lu'
 import Reveal from './Reveal'
 
-export default function SectionHeading({ index, eyebrow, title, children }) {
+const icons = {
+  about: LuUser,
+  projects: LuLayers,
+  experience: LuBriefcase,
+  skills: LuWrench,
+  education: LuGraduationCap,
+  certifications: LuAward,
+  contact: LuSend,
+}
+
+// Section label: an icon badge + name in a pill, instead of numbers.
+export default function SectionHeading({ icon, eyebrow, title, children }) {
+  const I = icons[icon] || LuUser
   return (
     <div className="mb-14 grid gap-4 md:grid-cols-[180px_1fr] md:gap-10">
       <Reveal>
-        <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
-          <span className="text-accent">{index}</span>
+        <div className="group inline-flex items-center gap-2.5 rounded-full border border-zinc-200 bg-white/70 py-1 pl-1 pr-4 shadow-sm backdrop-blur dark:border-zinc-800 dark:bg-zinc-900/70">
           <motion.span
-            className="h-px w-10 origin-left bg-zinc-300 dark:bg-zinc-700"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
+            initial={{ scale: 0, rotate: -90 }}
+            whileInView={{ scale: 1, rotate: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          />
-          <span>{eyebrow}</span>
+            transition={{ type: 'spring', stiffness: 260, damping: 16, delay: 0.15 }}
+            className="grid h-7 w-7 place-items-center rounded-full bg-accent text-sm text-white dark:text-zinc-900"
+          >
+            <I />
+          </motion.span>
+          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-600 dark:text-zinc-300">{eyebrow}</span>
         </div>
       </Reveal>
       <div>

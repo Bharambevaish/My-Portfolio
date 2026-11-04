@@ -25,7 +25,7 @@ export default function Certifications() {
   return (
     <section id="certifications" className="relative px-6 py-28">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading index="06" eyebrow="Certifications" title="Always learning">
+        <SectionHeading icon="certifications" eyebrow="Certifications" title="Always learning">
           <Counter value={certifications.length} /> certifications from NVIDIA, Siemens, HackerRank and more, across AI, data, programming, cloud and IoT. Click any certificate to view it.
         </SectionHeading>
 

@@ -8,7 +8,7 @@ export default function About() {
   return (
     <section id="about" className="relative px-6 py-28">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading index="01" eyebrow="About" title="A little about me" />
+        <SectionHeading icon="about" eyebrow="About" title="A little about me" />
         <div className="grid gap-12 md:grid-cols-[180px_1fr] md:gap-10">
           <div />
           <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr]">

@@ -22,7 +22,7 @@ export default function Projects() {
   return (
     <section id="projects" className="relative px-6 py-28">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading index="02" eyebrow="Projects" title="Selected work">
+        <SectionHeading icon="projects" eyebrow="Projects" title="Selected work">
           Data and AI projects I've built end to end. Click any card for the full story.
         </SectionHeading>
 

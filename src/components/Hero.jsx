@@ -47,6 +47,7 @@ export default function Hero({ ready }) {
                 <motion.span variants={word} className={`inline-block ${li === 1 ? 'font-serif font-normal italic text-accent' : ''}`}>
                   {line}
                 </motion.span>
+                {li === 1 && <span className="sr-only"> Bharambe</span>}
               </span>
             ))}
             <span className="block overflow-hidden pb-2 text-zinc-400 dark:text-zinc-500">

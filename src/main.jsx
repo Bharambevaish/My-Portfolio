@@ -4,6 +4,8 @@ import { MotionConfig } from 'framer-motion'
 import App from './App.jsx'
 import './index.css'
 
+document.getElementById('boot')?.remove()
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     {/* reducedMotion="user" respects the visitor's OS setting */}
