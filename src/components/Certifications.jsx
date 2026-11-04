@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { LuEye, LuChevronDown, LuBadgeCheck, LuAward } from 'react-icons/lu'
+import { LuEye, LuChevronDown, LuBadgeCheck, LuAward, LuShieldCheck } from 'react-icons/lu'
 import SectionHeading from './SectionHeading'
 import Reveal from './Reveal'
 import TiltCard from './TiltCard'
@@ -26,24 +26,37 @@ export default function Certifications() {
     <section id="certifications" className="relative px-6 py-28">
       <div className="mx-auto max-w-6xl">
         <SectionHeading index="06" eyebrow="Certifications" title="Always learning">
-          <Counter value={certifications.length} /> certifications across AI, data, programming, IoT and networking. Click any certificate to view it.
+          <Counter value={certifications.length} /> certifications from NVIDIA, Siemens, HackerRank and more, across AI, data, programming, cloud and IoT. Click any certificate to view it.
         </SectionHeading>
 
         <div className="md:ml-[220px]">
           {/* featured */}
-          <div className="mb-10 grid gap-4 sm:grid-cols-2">
+          <div className="mb-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {featured.map((c, i) => (
-              <Reveal key={c.title} delay={i * 0.08}>
-                <TiltCard className="h-full overflow-hidden rounded-3xl border border-zinc-200 bg-gradient-to-br from-indigo-500/10 via-white to-sky-500/5 p-6 dark:border-zinc-800 dark:from-indigo-500/15 dark:via-zinc-900 dark:to-sky-500/5">
-                  <LuAward className="pointer-events-none absolute -right-4 -top-4 text-8xl text-accent opacity-10" />
-                  <div className="flex items-start gap-4">
-                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-white text-xl text-accent shadow-sm dark:bg-zinc-800"><Icon name={c.icon} /></span>
-                    <div>
-                      <div className="font-mono text-[11px] uppercase tracking-widest text-accent">Featured · {c.detail}</div>
-                      <h3 className="mt-1 text-lg font-semibold">{c.title}</h3>
-                      <p className="text-sm text-zinc-500">{c.issuer} · {c.date}</p>
+              <Reveal key={c.title} delay={i * 0.06}>
+                <TiltCard
+                  role={c.file ? 'button' : undefined}
+                  tabIndex={c.file ? 0 : undefined}
+                  onClick={c.file ? () => setPreview(c) : undefined}
+                  onKeyDown={(e) => c.file && (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), setPreview(c))}
+                  aria-label={c.file ? `View certificate: ${c.title}` : undefined}
+                  className={`group flex h-full flex-col overflow-hidden rounded-3xl border border-zinc-200 bg-gradient-to-br from-indigo-500/10 via-white to-sky-500/5 p-6 transition-shadow duration-300 hover:shadow-xl dark:border-zinc-800 dark:from-indigo-500/15 dark:via-zinc-900 dark:to-sky-500/5 ${c.file ? 'cursor-pointer' : ''}`}
+                >
+                  <LuAward className="pointer-events-none absolute -right-4 -top-4 text-8xl text-accent opacity-10 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110" />
+                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-white text-xl text-accent shadow-sm dark:bg-zinc-800"><Icon name={c.icon} /></span>
+                  <div className="mt-4 font-mono text-[11px] uppercase tracking-widest text-accent">{c.detail}</div>
+                  <h3 className="mt-1 flex-1 font-semibold leading-snug">{c.title}</h3>
+                  <p className="mt-2 text-sm text-zinc-500">{c.issuer} · {c.date}</p>
+                  {(c.file || c.verify) && (
+                    <div className="mt-4 flex items-center gap-3 border-t border-zinc-200/70 pt-3 text-xs font-medium dark:border-zinc-700/60">
+                      {c.file && <span className="flex items-center gap-1 text-accent"><LuEye /> View</span>}
+                      {c.verify && (
+                        <a href={c.verify} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} className="flex items-center gap-1 text-emerald-600 hover:underline dark:text-emerald-400">
+                          <LuShieldCheck /> Verify
+                        </a>
+                      )}
                     </div>
-                  </div>
+                  )}
                 </TiltCard>
               </Reveal>
             ))}

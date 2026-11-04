@@ -1,11 +1,11 @@
 import {
   SiPython, SiPandas, SiNumpy, SiScikitlearn, SiJupyter, SiHuggingface, SiStreamlit,
   SiSupabase, SiGithub, SiPowerbi, SiMicrosoftexcel, SiPowerautomate, SiMicrosoftsharepoint,
-  SiC, SiSiemens, SiLinkedin, SiJavascript, SiHtml5, SiCss3, SiOpenjdk,
+  SiC, SiSiemens, SiLinkedin, SiJavascript, SiHtml5, SiCss3, SiOpenjdk, SiNvidia, SiHackerrank, SiAmazonwebservices, SiLinux,
 } from 'react-icons/si'
 import {
   LuBrainCircuit, LuBarChartBig, LuScale, LuShieldCheck, LuSparkles, LuDatabase,
-  LuGraduationCap, LuBookOpen, LuAward, LuBriefcase, LuCode2, LuCpu, LuWifi, LuNetwork, LuWorkflow,
+  LuGraduationCap, LuBookOpen, LuAward, LuBriefcase, LuCode2, LuCpu, LuWifi, LuNetwork, LuWorkflow, LuFactory, LuWrench, LuCloud,
 } from 'react-icons/lu'
 
 const map = {
@@ -17,6 +17,8 @@ const map = {
   sparkles: LuSparkles, sql: LuDatabase, grad: LuGraduationCap, book: LuBookOpen,
   award: LuAward, briefcase: LuBriefcase,
   javascript: SiJavascript, html: SiHtml5, css: SiCss3, java: SiOpenjdk,
+  nvidia: SiNvidia, hackerrank: SiHackerrank, aws: SiAmazonwebservices, linux: SiLinux,
+  factory: LuFactory, wrench: LuWrench, cloud: LuCloud,
   code: LuCode2, chip: LuCpu, iot: LuWifi, network: LuNetwork, workflow: LuWorkflow,
 }
 

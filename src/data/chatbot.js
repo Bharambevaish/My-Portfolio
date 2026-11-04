@@ -112,9 +112,9 @@ const intents = [
   },
   {
     id: 'certifications',
-    keywords: ['certificate', 'certificates', 'certification', 'certifications', 'course', 'courses', 'scholarship', 'scholar', 'award', 'awards', 'achievement', 'achievements'],
+    keywords: ['nvidia', 'cuda', 'hackerrank', 'aws', 'certificate', 'certificates', 'certification', 'certifications', 'course', 'courses', 'scholarship', 'scholar', 'award', 'awards', 'achievement', 'achievements'],
     reply: () => ({
-      text: `She has ${certifications.length} certifications. Highlights:\n\n• Siemens Scholar, Batch 11\n• Data Science and Applied Maths, Techademy (40 hours)\n• AI: Generative Adversarial Networks, Prompt Engineering with ChatGPT & GPT-4\n• Data: Microsoft SQL Server, Relational Database Design (MySQL)\n• Programming: Data Structures & Algorithms, Java, JavaScript, HTML, CSS\n• IoT: Concepts, Protocols, Design Methodology, Security, Embedded Systems\n• Networking: CCNA 01 Network Fundamentals`,
+      text: `She has ${certifications.length} certifications. Highlights:\n\n• NVIDIA: Fundamentals of Accelerated Computing with CUDA Python, and with Modern CUDA C++ (Certificates of Competency)\n• HackerRank: Python (Basic) skill certification\n• Siemens: Scholar (Batch 11), SITRAIN Basic Mechatronics, Basics of Electrical & Mechanical training\n• Data Science and Applied Maths, Techademy (40 hours)\n• AI: Generative Adversarial Networks, Prompt Engineering with ChatGPT & GPT-4\n• Data: Microsoft SQL Server, Relational Database Design (MySQL)\n• Programming: Data Structures & Algorithms, Java, JavaScript, HTML, CSS\n• IoT: Concepts, Protocols, Design Methodology, Security, Embedded Systems\n• Cloud & software: AWS Cloud Practitioner Essentials, Linux, Agile, CCNA 01 Network Fundamentals`,
       links: [{ label: 'See all certificates', href: '#certifications' }],
       chips: ['Education', 'Show me her projects'],
     }),

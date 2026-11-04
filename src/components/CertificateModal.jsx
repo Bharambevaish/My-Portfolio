@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
-import { LuX, LuExternalLink, LuBadgeCheck } from 'react-icons/lu'
+import { LuX, LuExternalLink, LuBadgeCheck, LuShieldCheck } from 'react-icons/lu'
 
 export const certUrl = (file) => `${import.meta.env.BASE_URL}certificates/${file}.pdf`
 export const certImg = (file) => `${import.meta.env.BASE_URL}certificates/img/${file}.jpg`
@@ -34,6 +34,11 @@ export default function CertificateModal({ cert: c, onClose }) {
             <h3 id="cert-title" className="mt-1 font-semibold leading-snug">{c.title}</h3>
           </div>
           <div className="flex shrink-0 items-center gap-2">
+            {c.verify && (
+              <a href={c.verify} target="_blank" rel="noreferrer" className="hidden items-center gap-1.5 rounded-full bg-emerald-500 px-3.5 py-2 text-xs font-medium text-white transition hover:shadow-lg sm:inline-flex">
+                <LuShieldCheck /> Verify
+              </a>
+            )}
             <a href={url} target="_blank" rel="noreferrer" className="hidden items-center gap-1.5 rounded-full border border-zinc-200 px-3.5 py-2 text-xs font-medium transition hover:border-zinc-900 sm:inline-flex dark:border-zinc-700 dark:hover:border-white">
               <LuExternalLink /> Open in new tab
             </a>

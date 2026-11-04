@@ -279,12 +279,20 @@ export const education = [
 
 // Certificates: `file` is a PDF in public/certificates/ (leave it out if there's no PDF).
 // `category` must match one of certificationCategories below.
-export const certificationCategories = ['AI & Data', 'Programming & Web', 'IoT & Embedded', 'Networks & Software']
+export const certificationCategories = ['AI & Data', 'Programming & Web', 'Cloud & Software', 'IoT & Embedded', 'Industry Training']
 
 export const certifications = [
-  // ── Awards & long-form training ──
-  { title: 'Siemens Scholarship Program', issuer: 'Siemens', date: 'Batch 11', category: 'AI & Data', icon: 'award', featured: true, detail: 'Scholar' },
+  // ── Featured (shown as large cards at the top) ──
+  { title: 'Fundamentals of Accelerated Computing with CUDA Python', issuer: 'NVIDIA', date: 'Feb 2026', category: 'AI & Data', icon: 'nvidia', featured: true, detail: 'Certificate of Competency', file: 'nvidia-accelerated-computing-cuda-python' },
+  { title: 'Fundamentals of Accelerated Computing with Modern CUDA C++', issuer: 'NVIDIA', date: 'Feb 2026', category: 'Programming & Web', icon: 'nvidia', featured: true, detail: 'Certificate of Competency', file: 'nvidia-accelerated-computing-cuda-cpp' },
+  { title: 'Python (Basic) Skill Certification', issuer: 'HackerRank', date: 'Oct 2024', category: 'Programming & Web', icon: 'hackerrank', featured: true, detail: 'Skill test passed', file: 'hackerrank-python-basic', verify: 'https://www.hackerrank.com/certificates/9bbafed16d3b' },
+  { title: 'Siemens Scholarship Program', issuer: 'Siemens', date: 'Batch 11', category: 'Industry Training', icon: 'award', featured: true, detail: 'Scholar' },
+  { title: 'Basic Mechatronics', issuer: 'Siemens SITRAIN Digital Industry Academy, Nashik', date: 'May–Jun 2025', category: 'Industry Training', icon: 'factory', featured: true, detail: 'Industry training', file: 'siemens-sitrain-basic-mechatronics' },
   { title: 'Data Science and Applied Maths', issuer: 'Techademy Learning Solutions', date: 'Apr 2026', category: 'AI & Data', icon: 'chart', featured: true, detail: '40 hours' },
+
+  // ── Industry training ──
+  { title: 'Basics of Electrical & Mechanical (practical training)', issuer: 'Siemens Technical Academy, Navi Mumbai', date: 'Jul 2024', category: 'Industry Training', icon: 'wrench', file: 'siemens-basics-electrical-mechanical' },
+
   { title: 'Data Science Training: Post-Assessment', issuer: 'Techademy Learning Solutions', date: 'Mar 2026', category: 'AI & Data', icon: 'chart', detail: 'Assessment', file: 'data-science-training-assessment' },
 
   // ── AI & Data ──
@@ -292,6 +300,7 @@ export const certifications = [
   { title: 'Prompt Engineering for Everybody with ChatGPT and GPT-4', issuer: 'Techademy', date: 'Dec 2025', category: 'AI & Data', icon: 'sparkles', file: 'prompt-engineering-chatgpt-gpt4' },
   { title: 'How to Use ChatGPT and Generative AI to Help Create Content', issuer: 'Techademy', date: 'Dec 2025', category: 'AI & Data', icon: 'sparkles', file: 'chatgpt-generative-ai-content' },
   { title: 'How to Use ChatGPT and Generative AI for Passive Income', issuer: 'Techademy', date: 'Dec 2025', category: 'AI & Data', icon: 'sparkles', file: 'chatgpt-generative-ai-passive-income' },
+  { title: 'ChatGPT and Prompt Engineering for Software Development', issuer: 'Techademy', date: 'Dec 2025', category: 'AI & Data', icon: 'sparkles', file: 'chatgpt-prompt-engineering-software-dev' },
   { title: 'Microsoft SQL Server Development for Everyone', issuer: 'Techademy', date: 'Dec 2025', category: 'AI & Data', icon: 'sql', file: 'microsoft-sql-server' },
   { title: 'Basic Relational Database Design, MySQL', issuer: 'Techademy', date: 'Dec 2025', category: 'AI & Data', icon: 'sql', file: 'relational-database-mysql' },
 
@@ -310,7 +319,12 @@ export const certifications = [
   { title: 'Security in IoT', issuer: 'Techademy', date: 'Dec 2025', category: 'IoT & Embedded', icon: 'shield', file: 'security-in-iot' },
   { title: 'Embedded System for IoT', issuer: 'Techademy', date: 'Dec 2025', category: 'IoT & Embedded', icon: 'chip', file: 'embedded-systems-for-iot' },
 
-  // ── Networks & Software ──
-  { title: 'CCNA 01: Network Fundamentals', issuer: 'Techademy', date: 'Dec 2025', category: 'Networks & Software', icon: 'network', file: 'ccna-network-fundamentals' },
-  { title: 'Software Development Processes and Methodologies', issuer: 'Techademy', date: 'Dec 2025', category: 'Networks & Software', icon: 'workflow', file: 'software-development-methodologies' },
+  { title: 'Cloud Platforms for IoT, AWS', issuer: 'Techademy', date: 'Dec 2025', category: 'IoT & Embedded', icon: 'cloud', file: 'cloud-platforms-iot-aws' },
+
+  // ── Cloud & Software ──
+  { title: 'AWS Cloud Practitioner Essentials Course', issuer: 'Techademy', date: 'Dec 2025', category: 'Cloud & Software', icon: 'aws', file: 'aws-cloud-practitioner-essentials' },
+  { title: 'Linux Crash Course for Beginners', issuer: 'Techademy', date: 'Dec 2025', category: 'Cloud & Software', icon: 'linux', file: 'linux-crash-course' },
+  { title: 'Agile Software Development', issuer: 'Techademy', date: 'Dec 2025', category: 'Cloud & Software', icon: 'workflow', file: 'agile-software-development' },
+  { title: 'CCNA 01: Network Fundamentals Course', issuer: 'Techademy', date: 'Dec 2025', category: 'Cloud & Software', icon: 'network', file: 'ccna-network-fundamentals' },
+  { title: 'Software Development Processes and Methodologies', issuer: 'Techademy', date: 'Dec 2025', category: 'Cloud & Software', icon: 'workflow', file: 'software-development-methodologies' },
 ]
