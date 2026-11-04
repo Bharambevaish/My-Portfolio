@@ -277,17 +277,40 @@ export const education = [
   },
 ]
 
+// Certificates: `file` is a PDF in public/certificates/ (leave it out if there's no PDF).
+// `category` must match one of certificationCategories below.
+export const certificationCategories = ['AI & Data', 'Programming & Web', 'IoT & Embedded', 'Networks & Software']
+
 export const certifications = [
-  {
-    title: 'Data Science and Applied Maths',
-    issuer: 'Techademy Learning Solutions',
-    date: 'Apr 2026',
-    detail: '40 hours',
-  },
-  {
-    title: 'Siemens Scholarship Program',
-    issuer: 'Siemens',
-    date: 'Batch 11',
-    detail: 'Scholar',
-  },
+  // ── Awards & long-form training ──
+  { title: 'Siemens Scholarship Program', issuer: 'Siemens', date: 'Batch 11', category: 'AI & Data', icon: 'award', featured: true, detail: 'Scholar' },
+  { title: 'Data Science and Applied Maths', issuer: 'Techademy Learning Solutions', date: 'Apr 2026', category: 'AI & Data', icon: 'chart', featured: true, detail: '40 hours' },
+  { title: 'Data Science Training: Post-Assessment', issuer: 'Techademy Learning Solutions', date: 'Mar 2026', category: 'AI & Data', icon: 'chart', detail: 'Assessment', file: 'data-science-training-assessment' },
+
+  // ── AI & Data ──
+  { title: 'Learning Generative Adversarial Networks', issuer: 'Techademy', date: 'Dec 2025', category: 'AI & Data', icon: 'brain', file: 'generative-adversarial-networks' },
+  { title: 'Prompt Engineering for Everybody with ChatGPT and GPT-4', issuer: 'Techademy', date: 'Dec 2025', category: 'AI & Data', icon: 'sparkles', file: 'prompt-engineering-chatgpt-gpt4' },
+  { title: 'How to Use ChatGPT and Generative AI to Help Create Content', issuer: 'Techademy', date: 'Dec 2025', category: 'AI & Data', icon: 'sparkles', file: 'chatgpt-generative-ai-content' },
+  { title: 'How to Use ChatGPT and Generative AI for Passive Income', issuer: 'Techademy', date: 'Dec 2025', category: 'AI & Data', icon: 'sparkles', file: 'chatgpt-generative-ai-passive-income' },
+  { title: 'Microsoft SQL Server Development for Everyone', issuer: 'Techademy', date: 'Dec 2025', category: 'AI & Data', icon: 'sql', file: 'microsoft-sql-server' },
+  { title: 'Basic Relational Database Design, MySQL', issuer: 'Techademy', date: 'Dec 2025', category: 'AI & Data', icon: 'sql', file: 'relational-database-mysql' },
+
+  // ── Programming & Web ──
+  { title: 'Introduction to Data Structures & Algorithms', issuer: 'Techademy', date: 'Dec 2025', category: 'Programming & Web', icon: 'code', file: 'data-structures-algorithms' },
+  { title: 'Java for Beginners: Your Easy Guide to Java Programming', issuer: 'Techademy', date: 'Dec 2025', category: 'Programming & Web', icon: 'java', file: 'java-for-beginners' },
+  { title: 'JavaScript for Beginners: Fundamental JavaScript Concepts', issuer: 'Techademy', date: 'Dec 2025', category: 'Programming & Web', icon: 'javascript', file: 'javascript-for-beginners' },
+  { title: 'Fundamentals of Programming Using Flowchart and Pseudocode', issuer: 'Techademy', date: 'Dec 2025', category: 'Programming & Web', icon: 'code', file: 'programming-flowchart-pseudocode' },
+  { title: 'Introduction to HTML', issuer: 'Techademy', date: 'Dec 2025', category: 'Programming & Web', icon: 'html', file: 'introduction-to-html' },
+  { title: 'An Introduction to CSS: A Complete Beginner to Expert Course', issuer: 'Techademy', date: 'Dec 2025', category: 'Programming & Web', icon: 'css', file: 'introduction-to-css' },
+
+  // ── IoT & Embedded ──
+  { title: 'Internet of Things: Concepts', issuer: 'Techademy', date: 'Dec 2025', category: 'IoT & Embedded', icon: 'iot', file: 'internet-of-things-concepts' },
+  { title: 'IoT: Design Methodology', issuer: 'Techademy', date: 'Dec 2025', category: 'IoT & Embedded', icon: 'iot', file: 'iot-design-methodology' },
+  { title: 'IoT Protocols', issuer: 'Techademy', date: 'Dec 2025', category: 'IoT & Embedded', icon: 'network', file: 'iot-protocols' },
+  { title: 'Security in IoT', issuer: 'Techademy', date: 'Dec 2025', category: 'IoT & Embedded', icon: 'shield', file: 'security-in-iot' },
+  { title: 'Embedded System for IoT', issuer: 'Techademy', date: 'Dec 2025', category: 'IoT & Embedded', icon: 'chip', file: 'embedded-systems-for-iot' },
+
+  // ── Networks & Software ──
+  { title: 'CCNA 01: Network Fundamentals', issuer: 'Techademy', date: 'Dec 2025', category: 'Networks & Software', icon: 'network', file: 'ccna-network-fundamentals' },
+  { title: 'Software Development Processes and Methodologies', issuer: 'Techademy', date: 'Dec 2025', category: 'Networks & Software', icon: 'workflow', file: 'software-development-methodologies' },
 ]

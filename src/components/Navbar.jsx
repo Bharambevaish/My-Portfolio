@@ -11,6 +11,7 @@ const links = [
   ['experience', 'Experience'],
   ['skills', 'Skills'],
   ['education', 'Education'],
+  ['certifications', 'Certificates'],
   ['contact', 'Contact'],
 ]
 const ids = links.map(([id]) => id)

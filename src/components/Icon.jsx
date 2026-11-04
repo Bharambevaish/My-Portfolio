@@ -1,11 +1,11 @@
 import {
   SiPython, SiPandas, SiNumpy, SiScikitlearn, SiJupyter, SiHuggingface, SiStreamlit,
   SiSupabase, SiGithub, SiPowerbi, SiMicrosoftexcel, SiPowerautomate, SiMicrosoftsharepoint,
-  SiC, SiSiemens, SiLinkedin,
+  SiC, SiSiemens, SiLinkedin, SiJavascript, SiHtml5, SiCss3, SiOpenjdk,
 } from 'react-icons/si'
 import {
   LuBrainCircuit, LuBarChartBig, LuScale, LuShieldCheck, LuSparkles, LuDatabase,
-  LuGraduationCap, LuBookOpen, LuAward, LuBriefcase,
+  LuGraduationCap, LuBookOpen, LuAward, LuBriefcase, LuCode2, LuCpu, LuWifi, LuNetwork, LuWorkflow,
 } from 'react-icons/lu'
 
 const map = {
@@ -16,6 +16,8 @@ const map = {
   brain: LuBrainCircuit, chart: LuBarChartBig, scale: LuScale, shield: LuShieldCheck,
   sparkles: LuSparkles, sql: LuDatabase, grad: LuGraduationCap, book: LuBookOpen,
   award: LuAward, briefcase: LuBriefcase,
+  javascript: SiJavascript, html: SiHtml5, css: SiCss3, java: SiOpenjdk,
+  code: LuCode2, chip: LuCpu, iot: LuWifi, network: LuNetwork, workflow: LuWorkflow,
 }
 
 export default function Icon({ name, className = '' }) {

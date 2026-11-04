@@ -37,7 +37,8 @@ Personal portfolio of **Vaishnavi Bharambe**, a B.Tech Information Technology st
 My-Portfolio/
 ├── .github/workflows/deploy.yml   # builds & deploys to GitHub Pages on every push to main
 ├── public/
-│   └── favicon.svg
+│   ├── favicon.svg
+│   └── certificates/              # certificate PDFs (+ img/ previews used in the pop-up)
 ├── src/
 │   ├── data/
 │   │   ├── portfolio.js           # ← ALL content lives here (edit this to update the site)
@@ -54,7 +55,9 @@ My-Portfolio/
 │   │   ├── ProjectModal.jsx       # project case-study pop-up
 │   │   ├── Experience.jsx         # scroll-drawn timeline
 │   │   ├── Skills.jsx             # marquee + skill groups
-│   │   ├── Education.jsx          # education & certifications
+│   │   ├── Education.jsx          # education
+│   │   ├── Certifications.jsx     # filterable certificate grid
+│   │   ├── CertificateModal.jsx   # certificate preview pop-up
 │   │   ├── Contact.jsx            # contact cards + message form
 │   │   ├── ChatBot.jsx            # floating FAQ assistant
 │   │   ├── Footer.jsx, BackToTop.jsx
@@ -85,3 +88,7 @@ npm run build     # production build in dist/
 ## Updating content
 
 Edit `src/data/portfolio.js`. To add a resume button, paste a public PDF link into `profile.resume`.
+
+**Adding a certificate:** put the PDF in `public/certificates/<name>.pdf`, create a preview with
+`pdftoppm -jpeg -scale-to-x 1400 -scale-to-y -1 -singlefile public/certificates/<name>.pdf public/certificates/img/<name>`,
+then add an entry to `certifications` with `file: '<name>'`.

@@ -4,7 +4,7 @@
 //  Each intent has keywords; the reply with the most keyword
 //  matches wins. Edit the replies here to change what it says.
 // ─────────────────────────────────────────────────────────────
-import { profile, projects } from './portfolio'
+import { profile, projects, certifications } from './portfolio'
 
 const byId = Object.fromEntries(projects.map((p) => [p.id, p]))
 const gh = (id) => byId[id]?.links?.github
@@ -114,7 +114,8 @@ const intents = [
     id: 'certifications',
     keywords: ['certificate', 'certificates', 'certification', 'certifications', 'course', 'courses', 'scholarship', 'scholar', 'award', 'awards', 'achievement', 'achievements'],
     reply: () => ({
-      text: `• Siemens Scholar, Batch 11 (Siemens Scholarship Program)\n• Data Science and Applied Maths, Techademy Learning Solutions (40 hours, April 2026)`,
+      text: `She has ${certifications.length} certifications. Highlights:\n\n• Siemens Scholar, Batch 11\n• Data Science and Applied Maths, Techademy (40 hours)\n• AI: Generative Adversarial Networks, Prompt Engineering with ChatGPT & GPT-4\n• Data: Microsoft SQL Server, Relational Database Design (MySQL)\n• Programming: Data Structures & Algorithms, Java, JavaScript, HTML, CSS\n• IoT: Concepts, Protocols, Design Methodology, Security, Embedded Systems\n• Networking: CCNA 01 Network Fundamentals`,
+      links: [{ label: 'See all certificates', href: '#certifications' }],
       chips: ['Education', 'Show me her projects'],
     }),
   },

@@ -34,7 +34,7 @@ export default function Contact() {
   return (
     <section id="contact" className="relative px-6 py-28">
       <div className="mx-auto max-w-6xl">
-        <SectionHeading index="06" eyebrow="Contact" title="Let's build something together">
+        <SectionHeading index="07" eyebrow="Contact" title="Let's build something together">
           I'm looking for data analyst and AI roles. If you have an opportunity or just want to talk data, my inbox is open.
         </SectionHeading>
 
