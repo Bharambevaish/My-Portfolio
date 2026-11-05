@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { LuMessageCircle, LuX, LuSend, LuArrowUpRight, LuCopy, LuSparkles } from 'react-icons/lu'
+import { LuX, LuSend, LuArrowUpRight, LuCopy, LuSparkles } from 'react-icons/lu'
 import { getReply, starterChips } from '../data/chatbot'
 import { useToast } from './Toast'
 import { profile } from '../data/portfolio'
@@ -61,35 +61,37 @@ export default function ChatBot() {
     <>
       {/* launcher */}
       <div className="fixed bottom-6 right-6 z-[65] flex items-end gap-3">
-        <AnimatePresence>
-          {nudge && !open && (
-            <motion.button
-              onClick={() => setOpen(true)}
-              initial={{ opacity: 0, x: 12, scale: 0.9 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: 12, scale: 0.9 }}
-              className="mb-2 hidden rounded-2xl rounded-br-md border border-zinc-200 bg-white px-4 py-2.5 text-sm font-medium shadow-xl sm:block dark:border-zinc-800 dark:bg-zinc-900"
-            >
-              Have a question about me? Ask here 👋
-            </motion.button>
-          )}
-        </AnimatePresence>
         <motion.button
           onClick={() => setOpen((o) => !o)}
-          aria-label={open ? 'Close chat' : 'Open chat assistant'}
+          aria-label={open ? 'Close chat' : 'Ask about Vaishnavi'}
           aria-expanded={open}
-          whileHover={{ scale: 1.06 }}
-          whileTap={{ scale: 0.92 }}
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
+          whileHover={{ scale: 1.04, y: -2 }}
+          whileTap={{ scale: 0.94 }}
+          initial={{ scale: 0, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 2, type: 'spring', stiffness: 260, damping: 18 }}
-          className="relative grid h-14 w-14 place-items-center rounded-full bg-zinc-900 text-white shadow-2xl shadow-indigo-900/30 dark:bg-white dark:text-zinc-900"
+          className={`relative flex items-center gap-2.5 rounded-full bg-zinc-900 text-white shadow-2xl shadow-indigo-900/30 ring-4 ring-accent/20 dark:bg-white dark:text-zinc-900 ${open ? 'h-14 w-14 justify-center' : 'h-14 py-1.5 pl-1.5 pr-1.5 sm:pr-5'}`}
         >
-          {!open && <span className="absolute inset-0 animate-ping rounded-full bg-accent opacity-20" />}
           <AnimatePresence mode="wait" initial={false}>
-            <motion.span key={open ? 'x' : 'chat'} initial={{ rotate: -90, scale: 0 }} animate={{ rotate: 0, scale: 1 }} exit={{ rotate: 90, scale: 0 }} transition={{ duration: 0.2 }} className="text-2xl">
-              {open ? <LuX /> : <LuMessageCircle />}
-            </motion.span>
+            {open ? (
+              <motion.span key="x" initial={{ rotate: -90, scale: 0 }} animate={{ rotate: 0, scale: 1 }} exit={{ rotate: 90, scale: 0 }} transition={{ duration: 0.2 }} className="text-2xl">
+                <LuX />
+              </motion.span>
+            ) : (
+              <motion.span key="ask" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} transition={{ duration: 0.2 }} className="flex items-center gap-2.5">
+                <span className="relative">
+                  <img src={`${import.meta.env.BASE_URL}${profile.photoSmall}`} alt="" className="h-11 w-11 rounded-full object-cover ring-2 ring-white/20 dark:ring-zinc-900/10" />
+                  <motion.span
+                    animate={{ rotate: [0, 15, -10, 0], scale: [1, 1.15, 1] }}
+                    transition={{ duration: 2.4, repeat: Infinity, repeatDelay: 1.5 }}
+                    className="absolute -bottom-0.5 -right-0.5 grid h-5 w-5 place-items-center rounded-full bg-accent text-[11px] text-white ring-2 ring-zinc-900 dark:text-zinc-900 dark:ring-white"
+                  >
+                    <LuSparkles />
+                  </motion.span>
+                </span>
+                <span className="hidden text-sm font-medium sm:block">Ask about me</span>
+              </motion.span>
+            )}
           </AnimatePresence>
         </motion.button>
       </div>
@@ -110,9 +112,7 @@ export default function ChatBot() {
             {/* header */}
             <div className="flex items-center gap-3 border-b border-zinc-100 bg-gradient-to-br from-indigo-500/10 to-sky-500/5 px-5 py-4 dark:border-zinc-800">
               <div className="relative">
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-zinc-900 font-serif text-lg italic text-indigo-200 dark:bg-white dark:text-indigo-600">
-                  {profile.initials.toLowerCase()}
-                </span>
+                <img src={`${import.meta.env.BASE_URL}${profile.photoSmall}`} alt="Vaishnavi Bharambe" className="h-10 w-10 rounded-full object-cover" />
                 <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-emerald-500 dark:border-zinc-950" />
               </div>
               <div className="min-w-0 flex-1">

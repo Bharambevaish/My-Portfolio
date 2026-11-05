@@ -15,13 +15,15 @@ export const profile = {
   email: 'vaishnavibharambe99@gmail.com',
   github: 'https://github.com/Bharambevaish',
   linkedin: 'https://www.linkedin.com/in/vaishnavi-bharambe-646783293/',
+  photo: 'vaishnavi-bharambe.jpg', // in public/
+  photoSmall: 'vaishnavi-bharambe-sm.jpg',
   resume: '', // TODO: paste a public link to your resume PDF to show a "Resume" button
 }
 
 export const about = {
   paragraphs: [
     "I'm a B.Tech Information Technology student at Walchand College of Engineering, Sangli, and a Siemens Scholar (Batch 11). I like questions that a dataset can answer: who your most valuable customers are, which ones are about to become valuable, and what to do about each group.",
-    'This summer I interned with the cybersecurity team at Siemens, where I built reports and automated workflows with Excel, Power BI, SharePoint and Power Automate. Outside class I build end-to-end projects in Python, and I am now moving into AI with retrieval-augmented generation (RAG) and transformer models.',
+    'This summer I interned with the cybersecurity team at Siemens, working across governance and risk, Zero Trust and vulnerability management, and building compliance dashboards and automated workflows with Power BI, Excel, Power Automate and SharePoint. Outside class I build end-to-end projects in Python, and I am now moving into AI with retrieval-augmented generation (RAG) and transformer models.',
   ],
   highlights: [
     { value: 8.5, decimals: 1, suffix: '', label: 'CGPA at WCE Sangli' },
@@ -187,13 +189,13 @@ export const experience = [
     org: 'Siemens',
     period: 'Jun 2026 – Jul 2026',
     type: 'Internship',
-    icon: 'siemens',
+    icon: 'briefcase',
     points: [
-      'Built data analysis and reports for the team with Excel pivot tables and Power BI dashboards.',
-      'Automated routine workflows with Power Automate and organised team content in SharePoint.',
-      'Learned the foundations of security practice, including Zero Trust and CVSS-based vulnerability management.',
+      'Governance & risk: worked on the Asset Classification and Protection (ACP) process and evaluated vendor risk using C-SCRM (cyber supply chain risk management) guidelines.',
+      'Architecture & vulnerability management: analysed Zero Trust Architecture (identity, micro-segmentation, device trust) and the vulnerability management lifecycle, aligned with ISO 27001 and IEC 62443 standards.',
+      'Automation & dashboarding: built compliance-tracking dashboards and automated workflows with Microsoft Excel, Power BI, Power Automate and SharePoint.',
     ],
-    tools: ['Power BI', 'Excel', 'Power Automate', 'SharePoint'],
+    tools: ['Zero Trust', 'ISO 27001', 'IEC 62443', 'C-SCRM', 'Power BI', 'Excel', 'Power Automate', 'SharePoint'],
   },
   {
     role: 'Siemens Scholar, Batch 11',

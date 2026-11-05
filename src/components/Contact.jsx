@@ -38,7 +38,7 @@ export default function Contact() {
           I'm looking for data analyst and AI roles. If you have an opportunity or just want to talk data, my inbox is open.
         </SectionHeading>
 
-        <div className="grid gap-10 md:ml-[220px] lg:grid-cols-[1fr_1.1fr]">
+        <div className="grid grid-cols-1 gap-10 md:ml-[220px] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] [&>*]:min-w-0">
           <div className="space-y-4">
             <Reveal>
               <div className="group flex items-center justify-between gap-4 rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900/60">
@@ -46,7 +46,7 @@ export default function Contact() {
                   <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-accent-soft text-xl text-accent"><LuMail /></span>
                   <div className="min-w-0">
                     <div className="text-xs text-zinc-500">Email</div>
-                    <a href={`mailto:${profile.email}`} className="block truncate font-medium hover:text-accent">{profile.email}</a>
+                    <a href={`mailto:${profile.email}`} className="block truncate text-sm font-medium hover:text-accent sm:text-base">{profile.email}</a>
                   </div>
                 </div>
                 <motion.button whileTap={{ scale: 0.85 }} onClick={copyEmail} aria-label="Copy email address"

@@ -94,9 +94,9 @@ const intents = [
   },
   {
     id: 'experience',
-    keywords: ['experience', 'intern', 'internship', 'siemens', 'worked', 'company', 'work experience', 'job experience', 'power bi'],
+    keywords: ['experience', 'intern', 'internship', 'siemens', 'zero trust', 'iso 27001', 'governance', 'compliance', 'vulnerability', 'worked', 'company', 'work experience', 'job experience', 'power bi'],
     reply: () => ({
-      text: `She was a Cybersecurity Summer Intern at Siemens (June–July 2026). Her work there was mostly data and automation: Excel pivot tables and Power BI dashboards for reporting, Power Automate workflows, and organising team content in SharePoint. She also learned security fundamentals such as Zero Trust and CVSS-based vulnerability management.\n\nShe's also a Siemens Scholar (Batch 11).`,
+      text: `She was a Cybersecurity Summer Intern at Siemens (June–July 2026), working in three areas:\n\n• Governance & risk: the Asset Classification and Protection (ACP) process, and vendor risk evaluation using C-SCRM guidelines\n• Architecture & vulnerability management: Zero Trust Architecture (identity, micro-segmentation, device trust) and the vulnerability lifecycle, aligned with ISO 27001 and IEC 62443\n• Automation & dashboards: compliance-tracking dashboards and automated workflows with Excel, Power BI, Power Automate and SharePoint\n\nShe's also a Siemens Scholar (Batch 11).`,
       links: [{ label: 'See Experience', href: '#experience' }],
       chips: ['Education', 'What are her skills?'],
     }),

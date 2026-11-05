@@ -22,7 +22,7 @@ function jsonLd() {
     name: profile.name,
     alternateName: ['Vaishnavi Kailas Bharambe', 'Bharambevaish'],
     url: SITE_URL,
-    image: `${SITE_URL}og-image.png`,
+    image: `${SITE_URL}vaishnavi-bharambe.jpg`,
     email: `mailto:${profile.email}`,
     jobTitle: 'Data Analyst & AI Developer',
     description,

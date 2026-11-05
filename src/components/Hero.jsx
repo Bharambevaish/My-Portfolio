@@ -33,7 +33,14 @@ export default function Hero({ ready }) {
 
       <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-[1.3fr_1fr]">
         <motion.div variants={container} initial="hidden" animate={state}>
-          <motion.div variants={fade} className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-zinc-200 bg-white/70 px-4 py-1.5 text-xs font-medium text-zinc-600 backdrop-blur dark:border-zinc-800 dark:bg-zinc-900/70 dark:text-zinc-300">
+          <motion.div variants={fade} className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-zinc-200 bg-white/70 py-1 pl-1 pr-4 text-xs font-medium text-zinc-600 backdrop-blur dark:border-zinc-800 dark:bg-zinc-900/70 dark:text-zinc-300">
+            <img
+              src={`${import.meta.env.BASE_URL}${profile.photoSmall}`}
+              alt="Vaishnavi Bharambe"
+              width="32"
+              height="32"
+              className="h-8 w-8 rounded-full object-cover ring-2 ring-white dark:ring-zinc-900"
+            />
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />

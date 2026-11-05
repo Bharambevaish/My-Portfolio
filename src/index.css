@@ -23,6 +23,8 @@
 }
 
 html { scroll-behavior: smooth; }
+/* never let anything push the page wider than the screen */
+html, body { overflow-x: clip; max-width: 100%; }
 body {
   @apply bg-white text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100;
   font-family: var(--font-sans);
