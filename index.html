@@ -14,10 +14,17 @@
         if (t === 'dark' || (!t && matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark');
       } catch (e) {}
     </script>
+    <style>
+      /* loading cover: hides the crawlable text until the app is drawn; matches the theme */
+      #boot{position:fixed;inset:0;z-index:200;display:grid;place-items:center;font:italic 64px Georgia,serif;background:#ffffff;color:#4f46e5}
+      .dark #boot{background:#09090b;color:#c7d2fe}
+      html,body{background:#ffffff}
+      html.dark,html.dark body{background:#09090b}
+    </style>
   </head>
   <body>
     <!-- covers the crawlable text version until the app takes over (removed in main.jsx) -->
-    <div id="boot" style="position:fixed;inset:0;z-index:200;background:#09090b;display:grid;place-items:center;color:#c7d2fe;font:italic 64px Georgia,serif">vb</div>
+    <div id="boot">vb</div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
