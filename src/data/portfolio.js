@@ -27,7 +27,7 @@ export const about = {
   ],
   highlights: [
     { value: 8.5, decimals: 1, suffix: '', label: 'CGPA at WCE Sangli' },
-    { value: 7, decimals: 0, suffix: '', label: 'Projects built, 6 live' },
+    { value: 7, decimals: 0, suffix: '', label: 'Projects built, all live' },
     { value: 10000, decimals: 0, suffix: '', label: 'Customers analysed in one project' },
     { value: 94.83, decimals: 2, suffix: '%', label: 'HSC (12th) score' },
   ],
@@ -39,7 +39,7 @@ export const projects = [
     title: 'High-Value Customer Identification',
     subtitle: 'Fintech customer segmentation',
     category: 'Data Analysis · ML',
-    status: 'Completed',
+    status: 'Live',
     icon: 'chart',
     accent: 'from-indigo-500/20 to-sky-500/10',
     summary:
@@ -72,7 +72,10 @@ export const projects = [
       ['Future potential', 10],
     ],
     stack: ['Python', 'Pandas', 'NumPy', 'scikit-learn', 'Matplotlib', 'Seaborn', 'Excel'],
-    links: { github: 'https://github.com/Bharambevaish/Fintech-Customer-Segmentation' },
+    links: {
+      github: 'https://github.com/Bharambevaish/Fintech-Customer-Segmentation',
+      live: 'https://vaishnavi-customer-segmentation.streamlit.app/',
+    },
   },
   {
     id: 'documind',

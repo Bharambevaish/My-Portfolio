@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import Loader from './components/Loader'
 import ScrollProgress from './components/ScrollProgress'
@@ -19,6 +19,18 @@ import { ToastProvider } from './components/Toast'
 
 export default function App() {
   const [loading, setLoading] = useState(true)
+
+  // Remove the boot cover only after React has drawn the page, so the
+  // crawlable text version in index.html is never seen by visitors.
+  useEffect(() => {
+    const boot = document.getElementById('boot')
+    if (!boot) return
+    boot.style.transition = 'opacity .3s ease'
+    requestAnimationFrame(() => {
+      boot.style.opacity = '0'
+      setTimeout(() => boot.remove(), 300)
+    })
+  }, [])
 
   return (
     <ToastProvider>

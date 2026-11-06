@@ -48,7 +48,7 @@ const intents = [
     id: 'projects',
     keywords: ['project', 'projects', 'built', 'build', 'portfolio', 'made', 'work samples', 'show'],
     reply: () => ({
-      text: `She has 7 projects, 6 of them live:\n\nData & AI\n1. High-Value Customer Identification: K-Means segmentation of 10,000 bank customers\n2. DocuMind: a RAG assistant that answers from your PDFs with page citations (live)\n3. Legal Case Outcome Prediction: InLegalBERT + SHAP (live on Azure)\n4. SafeLinker: phishing URL detector, 95%+ accuracy (live)\n\nFull-stack\n5. AuraEdu: institution management platform (live)\n6. Flour Mill Management System: bilingual orders & dues app (live)\n7. Stock & Billing System: GST billing for a distributor (live)\n\nAsk about any one for details.`,
+      text: `She has 7 projects, all live:\n\nData & AI\n1. High-Value Customer Identification: K-Means segmentation of 10,000 bank customers (live)\n2. DocuMind: a RAG assistant that answers from your PDFs with page citations (live)\n3. Legal Case Outcome Prediction: InLegalBERT + SHAP (live on Azure)\n4. SafeLinker: phishing URL detector, 95%+ accuracy (live)\n\nFull-stack\n5. AuraEdu: institution management platform (live)\n6. Flour Mill Management System: bilingual orders & dues app (live)\n7. Stock & Billing System: GST billing for a distributor (live)\n\nAsk about any one for details.`,
       links: [{ label: 'Open the Projects section', href: '#projects' }],
       chips: ['Fintech project', 'DocuMind RAG', 'Legal AI project', 'SafeLinker', 'AuraEdu', 'Flour Mill app', 'Billing system'],
     }),
@@ -58,7 +58,7 @@ const intents = [
     keywords: ['fintech', 'customer', 'segmentation', 'bank', 'kmeans', 'k-means', 'cluster', 'clustering', 'high-value', 'value score', 'data analysis project'],
     reply: () => ({
       text: `High-Value Customer Identification: she analysed 10,000 bank customers (26 attributes), built a weighted Customer Value Score from 7 dimensions, and clustered customers with K-Means (k = 4) into Standard, Silver, Gold and Premium.\n\nThe clusters matched existing Premium labels 94.5% of the time. Premium customers are 11% of the base but 30.5% of monthly spend. She also prioritised 1,338 high-potential customers with an action for each.`,
-      links: [{ label: 'Source code', href: gh('fintech') }],
+      links: [{ label: 'Try it live', href: live('fintech') }, { label: 'Source code', href: gh('fintech') }],
       chips: ['DocuMind RAG', 'What are her skills?'],
     }),
   },
