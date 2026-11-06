@@ -9,7 +9,7 @@ export const profile = {
   initials: 'VB',
   roles: ['Data Analyst', 'ML Enthusiast', 'AI Builder'],
   tagline:
-    'I turn raw data into decisions: from segmenting 10,000 bank customers to building an AI assistant that answers questions from your documents.',
+    'I turn raw data into decisions, from segmenting 10,000 bank customers to building an AI assistant that answers questions from your documents, and I build full-stack apps for small businesses.',
   location: 'Maharashtra, India',
   status: 'Open to Data Analyst & AI roles · 2027 graduate',
   email: 'vaishnavibharambe99@gmail.com',
@@ -27,7 +27,7 @@ export const about = {
   ],
   highlights: [
     { value: 8.5, decimals: 1, suffix: '', label: 'CGPA at WCE Sangli' },
-    { value: 4, decimals: 0, suffix: '', label: 'Projects shipped or in progress' },
+    { value: 7, decimals: 0, suffix: '', label: 'Projects built, 6 live' },
     { value: 10000, decimals: 0, suffix: '', label: 'Customers analysed in one project' },
     { value: 94.83, decimals: 2, suffix: '%', label: 'HSC (12th) score' },
   ],
@@ -79,7 +79,7 @@ export const projects = [
     title: 'DocuMind',
     subtitle: 'RAG document assistant',
     category: 'AI · LLM · RAG',
-    status: 'In progress',
+    status: 'Live',
     icon: 'brain',
     accent: 'from-violet-500/20 to-fuchsia-500/10',
     summary:
@@ -98,6 +98,7 @@ export const projects = [
       'Otherwise a strict prompt sends the cited context to the LLM (Groq in the cloud or Ollama locally), which must cite every fact.',
     ],
     results: [
+      'Deployed live on Streamlit Community Cloud.',
       'Every answer cites its source, e.g. [company_leave_policy.pdf, p.2], with a sources panel showing the snippet and similarity score.',
       'Two layers against hallucination: a similarity threshold and a strict prompt.',
       'Skips duplicate uploads with SHA-256 hashing and replaces changed files automatically.',
@@ -105,7 +106,10 @@ export const projects = [
     ],
     pipeline: ['Upload', 'Chunk', 'Embed', 'ChromaDB', 'Retrieve', 'LLM + citations'],
     stack: ['Python', 'Streamlit', 'ChromaDB', 'Sentence Transformers', 'Groq', 'Ollama', 'pypdf'],
-    links: { github: 'https://github.com/Bharambevaish/documind-rag' },
+    links: {
+      github: 'https://github.com/Bharambevaish/documind-rag',
+      live: 'https://documind-rag-gj29pautkaopcgeanv7cbh.streamlit.app/',
+    },
   },
   {
     id: 'legal',
@@ -118,7 +122,7 @@ export const projects = [
       guide: 'Dr. Shefali Sonavane',
       place: 'Dept. of Information Technology, Walchand College of Engineering, Sangli (2026–27)',
     },
-    status: 'Completed',
+    status: 'Live',
     icon: 'scale',
     accent: 'from-amber-500/20 to-orange-500/10',
     summary:
@@ -142,17 +146,22 @@ export const projects = [
       'Case outcome (allowed or dismissed): 71.6% validation accuracy, F1 0.764.',
       'On a separate benchmark of 120 Supreme Court judgments: 76.7% accuracy on case type and 67.5% on outcome.',
       'Streamlit dashboard with drag-and-drop upload, prediction with confidence, and a SHAP force plot.',
+      'Deployed live on Azure App Service.',
     ],
     pipeline: ['PDF upload', 'Clean & chunk', 'InLegalBERT', 'SHAP', 'Dashboard'],
     stack: ['Python', 'InLegalBERT', 'Hugging Face', 'SHAP', 'PyMuPDF', 'Streamlit', 'Supabase'],
-    links: { github: 'https://github.com/Bharambevaish/AI-for-Legal-Case' },
+    note: 'The fine-tuned InLegalBERT checkpoints were originally trained by Nikhil Raghuwanshi and team and are mirrored on Hugging Face with their permission.',
+    links: {
+      github: 'https://github.com/Bharambevaish/AI-for-Legal-Case',
+      live: 'https://legal-ai-hub-vaishnavi-f0gpa6c6b5hrecbs.indiasouthcentral-01.azurewebsites.net/',
+    },
   },
   {
     id: 'safelinker',
     title: 'SafeLinker',
     subtitle: 'Phishing URL detection',
     category: 'Security · ML',
-    status: 'Completed',
+    status: 'Live',
     icon: 'shield',
     accent: 'from-emerald-500/20 to-teal-500/10',
     summary:
@@ -179,6 +188,112 @@ export const projects = [
     links: {
       github: 'https://github.com/Bharambevaish/Safe-Linker-Phishing-Detector',
       live: 'https://safe-linker-phishing-detector-cj7snqhuhm7lxko4n7x72b.streamlit.app/',
+    },
+  },
+  {
+    id: 'auraedu',
+    title: 'AuraEdu',
+    subtitle: 'Institution management platform',
+    category: 'Full-Stack · Web App',
+    status: 'Live',
+    icon: 'school',
+    accent: 'from-teal-500/20 to-cyan-500/10',
+    summary:
+      'A management suite for coaching institutes, with an admin and staff dashboard, a student portal and about 25 modules, built with Next.js, MongoDB and Auth.js.',
+    metrics: [
+      { value: '~25', label: 'modules' },
+      { value: '3', label: 'user roles' },
+      { value: '23', label: 'DB collections' },
+    ],
+    problem:
+      'Coaching institutes juggle admissions, fees, attendance and communication across spreadsheets and apps. AuraEdu puts it all on one platform and lets institutes see every module working before choosing which ones to roll out.',
+    approach: [
+      'Built full-stack with the Next.js 16 App Router and server actions, so there is no separate backend to run.',
+      'Modelled the data in MongoDB with Mongoose (23 collections) and a seeded demo dataset that can be reset in one click.',
+      'Secured sign-in with Auth.js v5 (bcrypt, JWT cookie) plus a server-side session registry that re-checks the user on every request.',
+      'Added role-based access for admin, staff and students, with Zod validation on every change and tests in Vitest and Playwright.',
+    ],
+    results: [
+      'Live demo with one-click logins for admin, staff and student.',
+      'Seven fully working core modules, including a student registration wizard and a student portal with live fee balance.',
+      'Remaining modules run on realistic seeded data, ready to be built out for real.',
+    ],
+    pipeline: ['Landing page', 'Role login', 'Admin & staff dashboard', 'Student portal', 'MongoDB'],
+    stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'MongoDB', 'Mongoose', 'Auth.js', 'Zod', 'Playwright'],
+    links: {
+      github: 'https://github.com/Bharambevaish/Aura-Edu',
+      live: 'https://aura-edu-eight.vercel.app/',
+    },
+  },
+  {
+    id: 'flourmill',
+    title: 'Flour Mill Management System',
+    subtitle: 'Bilingual orders, payments & dues',
+    category: 'Full-Stack · PWA',
+    status: 'Live',
+    icon: 'wheat',
+    accent: 'from-yellow-500/20 to-amber-500/10',
+    team: {
+      label: 'Team project',
+      members: 'Vaishnavi Bharambe, Nikhil Raghuwanshi, Shital Kalekar and BroccoliSnivy (GitHub)',
+    },
+    summary:
+      'A Marathi/English app for a small flour mill: the owner runs orders, payments and dues from one console, and customers track orders and pay by UPI from an installable mobile portal.',
+    metrics: [
+      { value: 'मराठी/EN', label: 'bilingual' },
+      { value: 'PWA', label: 'installable app' },
+      { value: '2FA', label: 'owner security' },
+    ],
+    problem:
+      'The mill tracked grain orders, payments and credit (उधारी) on paper, so customers had to visit or call to find out whether their flour was ready or how much they owed.',
+    approach: [
+      'Owner console: multi-bag order intake, a forward-only queue (pending, processing, completed, collected), a payments hub, outstanding dues, and reports with CSV and PDF export.',
+      'Customer portal: PIN login, an order tracker with status steps, a "what you owe" card with the mill\'s UPI QR, and an in-app notifications inbox.',
+      'Security: Argon2id hashing, revocable sessions, CSRF protection, Zod validation, rate limits, strict security headers, an audit log and optional TOTP 2FA for the owner.',
+    ],
+    results: [
+      'Live on Vercel and installable as an app on Android and iOS.',
+      'Fully bilingual in Marathi and English, with printable receipts (पावती).',
+    ],
+    pipeline: ['Order intake', 'Queue', 'Payments', 'Dues (उधारी)', 'Customer portal'],
+    stack: ['Next.js', 'React', 'TypeScript', 'MongoDB', 'Mongoose', 'Zod', 'Argon2', 'Tailwind CSS'],
+    links: {
+      github: 'https://github.com/Bharambevaish/Flour-Mill-Management-System',
+      live: 'https://feed-mill-management-system.vercel.app/',
+    },
+  },
+  {
+    id: 'store',
+    title: 'Stock & Billing System',
+    subtitle: 'GST billing for a supplies distributor',
+    category: 'Full-Stack · MERN',
+    status: 'Live',
+    icon: 'receipt',
+    accent: 'from-rose-500/20 to-pink-500/10',
+    summary:
+      'Stock, GST billing and customer-ledger system for Naresh Enterprises, Nanded, a distributor of housekeeping and cleaning supplies.',
+    metrics: [
+      { value: 'GST', label: 'auto CGST/SGST/IGST' },
+      { value: 'MERN', label: 'stack' },
+      { value: '0', label: 'negative stock' },
+    ],
+    problem:
+      'Bills were written in a paper bill book while stock and customer balances were tracked separately, which made GST, stock and dues mistakes easy.',
+    approach: [
+      'One shared billing service handles counter sales, delivered orders and quotation-to-bill conversions.',
+      'Invoice numbers come from an atomic counter that can continue from the paper bill book, so they never repeat.',
+      'Each product\'s own GST rate is applied, with IGST for out-of-state customers and CGST + SGST otherwise, rounded to the paisa.',
+      'Stock is deducted all-or-nothing and never goes below zero. Bills are never deleted: cancelling restores stock and keeps any advance on the customer\'s account.',
+    ],
+    results: [
+      'Live web app with an owner-only login.',
+      'Production runbooks for hosting, backups and credential rotation.',
+    ],
+    pipeline: ['Products & stock', 'Sale or order', 'Billing service', 'GST invoice', 'Customer ledger'],
+    stack: ['React', 'Vite', 'Node.js', 'Express', 'MongoDB', 'JWT'],
+    links: {
+      github: 'https://github.com/Bharambevaish/Store-Management',
+      live: 'https://tammewar-pharmacy.pages.dev/',
     },
   },
 ]
@@ -239,6 +354,16 @@ export const skills = [
       { name: 'ChromaDB', icon: 'sql' },
       { name: 'InLegalBERT', icon: 'scale' },
       { name: 'SHAP (Explainable AI)', icon: 'sparkles' },
+    ],
+  },
+  {
+    group: 'Web & Full-Stack',
+    items: [
+      { name: 'Next.js & React', icon: 'react' },
+      { name: 'Node.js & Express', icon: 'node' },
+      { name: 'MongoDB', icon: 'mongodb' },
+      { name: 'TypeScript', icon: 'typescript' },
+      { name: 'Tailwind CSS', icon: 'tailwind' },
     ],
   },
   {

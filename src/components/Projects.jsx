@@ -12,6 +12,7 @@ const filters = {
   All: () => true,
   'Data & ML': (p) => /Data|ML/.test(p.category),
   'AI & NLP': (p) => /AI|NLP|LLM/.test(p.category),
+  'Full-Stack': (p) => /Full-Stack/.test(p.category),
 }
 
 export default function Projects() {
@@ -87,7 +88,13 @@ function ProjectCard({ project: p, onOpen }) {
         >
           <Icon name={p.icon} />
         </motion.div>
-        <span className={`rounded-full px-3 py-1 text-xs font-medium ${p.status === 'Completed' ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400' : 'bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400'}`}>
+        <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium ${p.status === 'In progress' ? 'bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400' : 'bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400'}`}>
+          {p.status === 'Live' && (
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
+            </span>
+          )}
           {p.status}
         </span>
       </div>

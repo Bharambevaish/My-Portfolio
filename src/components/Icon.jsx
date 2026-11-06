@@ -1,11 +1,11 @@
 import {
   SiPython, SiPandas, SiNumpy, SiScikitlearn, SiJupyter, SiHuggingface, SiStreamlit,
   SiSupabase, SiGithub, SiPowerbi, SiMicrosoftexcel, SiPowerautomate, SiMicrosoftsharepoint,
-  SiC, SiSiemens, SiLinkedin, SiJavascript, SiHtml5, SiCss3, SiOpenjdk, SiNvidia, SiHackerrank, SiAmazonwebservices, SiLinux,
+  SiC, SiSiemens, SiLinkedin, SiJavascript, SiHtml5, SiCss3, SiOpenjdk, SiNvidia, SiHackerrank, SiAmazonwebservices, SiLinux, SiReact, SiNodedotjs, SiMongodb, SiTypescript, SiTailwindcss,
 } from 'react-icons/si'
 import {
   LuBrainCircuit, LuBarChartBig, LuScale, LuShieldCheck, LuSparkles, LuDatabase,
-  LuGraduationCap, LuBookOpen, LuAward, LuBriefcase, LuCode2, LuCpu, LuWifi, LuNetwork, LuWorkflow, LuFactory, LuWrench, LuCloud,
+  LuGraduationCap, LuBookOpen, LuAward, LuBriefcase, LuCode2, LuCpu, LuWifi, LuNetwork, LuWorkflow, LuFactory, LuWrench, LuCloud, LuSchool, LuWheat, LuReceipt,
 } from 'react-icons/lu'
 
 const map = {
@@ -18,6 +18,8 @@ const map = {
   award: LuAward, briefcase: LuBriefcase,
   javascript: SiJavascript, html: SiHtml5, css: SiCss3, java: SiOpenjdk,
   nvidia: SiNvidia, hackerrank: SiHackerrank, aws: SiAmazonwebservices, linux: SiLinux,
+  react: SiReact, node: SiNodedotjs, mongodb: SiMongodb, typescript: SiTypescript, tailwind: SiTailwindcss,
+  school: LuSchool, wheat: LuWheat, receipt: LuReceipt,
   factory: LuFactory, wrench: LuWrench, cloud: LuCloud,
   code: LuCode2, chip: LuCpu, iot: LuWifi, network: LuNetwork, workflow: LuWorkflow,
 }

@@ -39,7 +39,7 @@ const intents = [
     id: 'skills',
     keywords: ['skill', 'skills', 'tech', 'stack', 'tools', 'language', 'languages', 'know', 'python', 'sql', 'technologies', 'expertise', 'good at'],
     reply: () => ({
-      text: `Here's her toolkit:\n\n• Languages: Python, SQL, C\n• Data & ML: Pandas, NumPy, scikit-learn, XGBoost, K-Means, Matplotlib, Seaborn\n• AI & NLP: RAG, LLMs (Groq, Ollama), ChromaDB, Hugging Face, InLegalBERT, SHAP\n• BI & tools: Power BI, Excel, Power Automate, SharePoint, Streamlit, Supabase, Git`,
+      text: `Here's her toolkit:\n\n• Languages: Python, SQL, C\n• Data & ML: Pandas, NumPy, scikit-learn, XGBoost, K-Means, Matplotlib, Seaborn\n• AI & NLP: RAG, LLMs (Groq, Ollama), ChromaDB, Hugging Face, InLegalBERT, SHAP\n• Web & full-stack: Next.js, React, Node.js, Express, MongoDB, TypeScript, Tailwind CSS\n• BI & tools: Power BI, Excel, Power Automate, SharePoint, Streamlit, Supabase, Git`,
       links: [{ label: 'See the Skills section', href: '#skills' }],
       chips: ['Show me her projects', 'Does she have AI experience?'],
     }),
@@ -48,9 +48,9 @@ const intents = [
     id: 'projects',
     keywords: ['project', 'projects', 'built', 'build', 'portfolio', 'made', 'work samples', 'show'],
     reply: () => ({
-      text: `She has 4 main projects:\n\n1. High-Value Customer Identification: K-Means segmentation of 10,000 bank customers\n2. DocuMind: a RAG assistant that answers from your PDFs with page citations\n3. Legal Case Outcome Prediction: InLegalBERT + SHAP, 89.7% case-type accuracy\n4. SafeLinker: phishing URL detector, 95%+ accuracy, live on Streamlit\n\nAsk about any one for details.`,
+      text: `She has 7 projects, 6 of them live:\n\nData & AI\n1. High-Value Customer Identification: K-Means segmentation of 10,000 bank customers\n2. DocuMind: a RAG assistant that answers from your PDFs with page citations (live)\n3. Legal Case Outcome Prediction: InLegalBERT + SHAP (live on Azure)\n4. SafeLinker: phishing URL detector, 95%+ accuracy (live)\n\nFull-stack\n5. AuraEdu: institution management platform (live)\n6. Flour Mill Management System: bilingual orders & dues app (live)\n7. Stock & Billing System: GST billing for a distributor (live)\n\nAsk about any one for details.`,
       links: [{ label: 'Open the Projects section', href: '#projects' }],
-      chips: ['Fintech project', 'DocuMind RAG', 'Legal AI project', 'SafeLinker'],
+      chips: ['Fintech project', 'DocuMind RAG', 'Legal AI project', 'SafeLinker', 'AuraEdu', 'Flour Mill app', 'Billing system'],
     }),
   },
   {
@@ -66,8 +66,8 @@ const intents = [
     id: 'documind',
     keywords: ['rag', 'documind', 'document', 'documents', 'pdf', 'llm', 'chroma', 'chromadb', 'retrieval', 'groq', 'ollama', 'generative', 'genai'],
     reply: () => ({
-      text: `DocuMind is a RAG (retrieval-augmented generation) assistant. You upload PDFs, TXT or Markdown files and ask questions; it answers only from your documents and cites the file and page for every fact.\n\nUnder the hood: 800-character chunks, all-MiniLM-L6-v2 embeddings, ChromaDB, and Groq or Ollama as the LLM. If nothing relevant is found it says so instead of guessing. It's in active development.`,
-      links: [{ label: 'Source code', href: gh('documind') }],
+      text: `DocuMind is a RAG (retrieval-augmented generation) assistant. You upload PDFs, TXT or Markdown files and ask questions; it answers only from your documents and cites the file and page for every fact.\n\nUnder the hood: 800-character chunks, all-MiniLM-L6-v2 embeddings, ChromaDB, and Groq or Ollama as the LLM. If nothing relevant is found it says so instead of guessing.`,
+      links: [{ label: 'Try it live', href: live('documind') }, { label: 'Source code', href: gh('documind') }],
       chips: ['Legal AI project', 'Does she have AI experience?'],
     }),
   },
@@ -76,7 +76,7 @@ const intents = [
     keywords: ['legal', 'law', 'court', 'case', 'judgment', 'inlegalbert', 'bert', 'shap', 'explainable', 'nlp'],
     reply: () => ({
       text: `AI for Legal Case Outcome Prediction reads Indian court judgment PDFs and uses fine-tuned InLegalBERT models to predict the jurisdiction and the appellate outcome (allowed or dismissed).\n\nLong texts are split into overlapping 512-token chunks, and SHAP highlights the phrases that drove each prediction. On validation it reached 89.7% accuracy (F1 0.895) for case type and 71.6% (F1 0.764) for outcome, and it was also tested on a separate set of 120 Supreme Court judgments.\n\nIt's a team project (Group F, Project IV) at Walchand College of Engineering with Ankita Kamble and Shrutika Pagare, guided by Dr. Shefali Sonavane.`,
-      links: [{ label: 'Source code', href: gh('legal') }],
+      links: [{ label: 'Try it live', href: live('legal') }, { label: 'Source code', href: gh('legal') }],
       chips: ['SafeLinker', 'Show me her projects'],
     }),
   },
@@ -90,6 +90,33 @@ const intents = [
         { label: 'Source code', href: gh('safelinker') },
       ],
       chips: ['Fintech project', 'Tell me about Siemens'],
+    }),
+  },
+  {
+    id: 'auraedu',
+    keywords: ['aura', 'auraedu', 'aura edu', 'institution', 'coaching', 'school', 'student portal', 'education app', 'nextjs', 'next.js'],
+    reply: () => ({
+      text: `AuraEdu is an institution management platform for coaching institutes: an admin and staff dashboard, a student portal and about 25 modules (7 fully working, the rest on seeded demo data).\n\nBuilt with Next.js 16 server actions, MongoDB (23 collections), Auth.js with a server-side session registry, role-based access and Zod validation. The live demo has one-click logins.`,
+      links: [{ label: 'Try it live', href: live('auraedu') }, { label: 'Source code', href: gh('auraedu') }],
+      chips: ['Flour Mill app', 'Billing system'],
+    }),
+  },
+  {
+    id: 'flourmill',
+    keywords: ['flour', 'mill', 'feed mill', 'grain', 'marathi', 'bilingual', 'pwa', 'udhari'],
+    reply: () => ({
+      text: `The Flour Mill Management System is a Marathi/English app for a small flour mill, built as a team project. The owner manages orders, a forward-only queue, payments, dues (उधारी) and reports; customers log in with a PIN to track orders and pay by UPI from an installable mobile app.\n\nSecurity includes Argon2id, CSRF protection, rate limits, an audit log and optional 2FA.`,
+      links: [{ label: 'Try it live', href: live('flourmill') }, { label: 'Source code', href: gh('flourmill') }],
+      chips: ['AuraEdu', 'Billing system'],
+    }),
+  },
+  {
+    id: 'store',
+    keywords: ['store', 'stock', 'billing', 'invoice', 'gst', 'inventory', 'pharmacy', 'mern', 'express'],
+    reply: () => ({
+      text: `The Stock & Billing System is a MERN app (React, Node.js, Express, MongoDB) for Naresh Enterprises, a cleaning-supplies distributor in Nanded.\n\nIt handles counter sales, orders and quotations through one billing service, applies per-product GST (CGST + SGST or IGST), uses non-repeating invoice numbers, never lets stock go negative, and keeps a customer ledger.`,
+      links: [{ label: 'Try it live', href: live('store') }, { label: 'Source code', href: gh('store') }],
+      chips: ['AuraEdu', 'Flour Mill app'],
     }),
   },
   {
@@ -200,6 +227,9 @@ const chipMap = {
   'Fintech project': 'fintech',
   'DocuMind RAG': 'documind',
   'Legal AI project': 'legal',
+  AuraEdu: 'auraedu',
+  'Flour Mill app': 'flourmill',
+  'Billing system': 'store',
   SafeLinker: 'safelinker',
   'Tell me about Siemens': 'experience',
   Education: 'education',

@@ -65,8 +65,8 @@ export default function ProjectModal({ project: p, onClose }) {
               <div className="text-sm leading-relaxed">
                 <div className="font-semibold">{p.team.label}</div>
                 <div className="text-zinc-600 dark:text-zinc-400">Team: {p.team.members}</div>
-                <div className="text-zinc-600 dark:text-zinc-400">Guide: {p.team.guide}</div>
-                <div className="text-zinc-500">{p.team.place}</div>
+                {p.team.guide && <div className="text-zinc-600 dark:text-zinc-400">Guide: {p.team.guide}</div>}
+                {p.team.place && <div className="text-zinc-500">{p.team.place}</div>}
               </div>
             </motion.div>
           )}
@@ -139,6 +139,12 @@ export default function ProjectModal({ project: p, onClose }) {
               ))}
             </div>
           </motion.div>
+
+          {p.note && (
+            <motion.p variants={item} className="rounded-xl border border-dashed border-zinc-300 px-4 py-3 text-sm text-zinc-500 dark:border-zinc-700 dark:text-zinc-400">
+              {p.note}
+            </motion.p>
+          )}
 
           {(p.links.github || p.links.live) && (
             <motion.div variants={item} className="flex flex-wrap gap-3 border-t border-zinc-100 pt-6 dark:border-zinc-800">
