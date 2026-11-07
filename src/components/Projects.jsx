@@ -5,7 +5,8 @@ import { SiGithub } from 'react-icons/si'
 import SectionHeading from './SectionHeading'
 import TiltCard from './TiltCard'
 import Icon from './Icon'
-import ProjectModal from './ProjectModal'
+import { lazy, Suspense } from 'react'
+const ProjectModal = lazy(() => import('./ProjectModal'))
 import { projects } from '../data/portfolio'
 
 const filters = {
@@ -62,7 +63,11 @@ export default function Projects() {
       </div>
 
       <AnimatePresence>
-        {selected && <ProjectModal project={selected} onClose={() => setSelected(null)} />}
+        {selected && (
+          <Suspense fallback={null}>
+            <ProjectModal project={selected} onClose={() => setSelected(null)} />
+          </Suspense>
+        )}
       </AnimatePresence>
     </section>
   )
@@ -72,11 +77,7 @@ function ProjectCard({ project: p, onOpen }) {
   return (
     <TiltCard
       intensity={6}
-      role="button"
-      tabIndex={0}
       onClick={onOpen}
-      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), onOpen())}
-      aria-label={`Open details for ${p.title}`}
       className="group h-full cursor-pointer overflow-hidden rounded-3xl border border-zinc-200 bg-white p-7 transition-shadow duration-500 hover:shadow-2xl hover:shadow-indigo-900/10 dark:border-zinc-800 dark:bg-zinc-900/60"
     >
       <div className={`pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-gradient-to-br ${p.accent} blur-2xl transition-transform duration-700 group-hover:scale-150`} />
@@ -128,7 +129,14 @@ function ProjectCard({ project: p, onOpen }) {
 
       <div className="relative mt-7 flex items-center justify-between border-t border-zinc-100 pt-5 text-sm dark:border-zinc-800">
         <div className="flex items-center gap-2">
-          <span className="hidden items-center gap-2 text-zinc-500 sm:flex"><LuMousePointerClick /> Case study</span>
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); onOpen() }}
+            aria-label={`Case study: ${p.title}`}
+            className="inline-flex items-center gap-1.5 rounded-full px-2 py-1.5 text-xs font-medium text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-300 dark:hover:text-white sm:text-sm"
+          >
+            <LuMousePointerClick /> Case study
+          </button>
           {p.links.github && (
             <a href={p.links.github} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} aria-label={`${p.title} source code on GitHub`}
               className="ml-1 inline-flex items-center gap-1.5 rounded-full border border-zinc-200 px-3 py-1.5 text-xs font-medium transition hover:-translate-y-0.5 hover:border-zinc-900 dark:border-zinc-700 dark:hover:border-white">
@@ -143,7 +151,7 @@ function ProjectCard({ project: p, onOpen }) {
             </a>
           )}
         </div>
-        <span className="grid h-10 w-10 place-items-center rounded-full bg-zinc-900 text-white transition-transform duration-500 group-hover:rotate-45 dark:bg-white dark:text-zinc-900">
+        <span aria-hidden="true" className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-zinc-900 text-white transition-transform duration-500 group-hover:rotate-45 dark:bg-white dark:text-zinc-900">
           <LuArrowUpRight />
         </span>
       </div>

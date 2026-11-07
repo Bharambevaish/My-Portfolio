@@ -15,8 +15,8 @@ export const profile = {
   email: 'vaishnavibharambe99@gmail.com',
   github: 'https://github.com/Bharambevaish',
   linkedin: 'https://www.linkedin.com/in/vaishnavi-bharambe-646783293/',
-  photo: 'vaishnavi-bharambe.jpg', // in public/
-  photoSmall: 'vaishnavi-bharambe-sm.jpg',
+  photo: 'vaishnavi-bharambe.webp', // in public/ (a .jpg copy is kept for link previews)
+  photoSmall: 'vaishnavi-bharambe-sm.webp',
   resume: '', // TODO: paste a public link to your resume PDF to show a "Resume" button
 }
 

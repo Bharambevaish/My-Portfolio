@@ -63,7 +63,7 @@ export default function ChatBot() {
       <div className="fixed bottom-6 right-6 z-[65] flex items-end gap-3">
         <motion.button
           onClick={() => setOpen((o) => !o)}
-          aria-label={open ? 'Close chat' : 'Ask about Vaishnavi'}
+          aria-label={open ? 'Close chat' : 'Ask about me: chat with Vaishnavi\'s assistant'}
           aria-expanded={open}
           whileHover={{ scale: 1.04, y: -2 }}
           whileTap={{ scale: 0.94 }}

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import Loader from './components/Loader'
 import ScrollProgress from './components/ScrollProgress'
@@ -14,11 +14,17 @@ import Certifications from './components/Certifications'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import BackToTop from './components/BackToTop'
-import ChatBot from './components/ChatBot'
+const ChatBot = lazy(() => import('./components/ChatBot'))
 import { ToastProvider } from './components/Toast'
 
 export default function App() {
-  const [loading, setLoading] = useState(true)
+  // intro loader plays once per browser session
+  const [loading, setLoading] = useState(() => {
+    try { return !sessionStorage.getItem('intro-seen') } catch { return true }
+  })
+  useEffect(() => {
+    if (!loading) { try { sessionStorage.setItem('intro-seen', '1') } catch { /* storage unavailable */ } }
+  }, [loading])
 
   // Remove the boot cover only after React has drawn the page, so the
   // crawlable text version in index.html is never seen by visitors.
@@ -51,8 +57,12 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-      <BackToTop />
-      <ChatBot />
+      <aside aria-label="Quick actions">
+        <BackToTop />
+        <Suspense fallback={null}>
+          <ChatBot />
+        </Suspense>
+      </aside>
     </ToastProvider>
   )
 }

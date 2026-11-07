@@ -5,7 +5,8 @@ import SectionHeading from './SectionHeading'
 import Reveal from './Reveal'
 import TiltCard from './TiltCard'
 import Icon from './Icon'
-import CertificateModal from './CertificateModal'
+import { lazy, Suspense } from 'react'
+const CertificateModal = lazy(() => import('./CertificateModal'))
 import Counter from './Counter'
 import { certifications, certificationCategories } from '../data/portfolio'
 
@@ -35,11 +36,7 @@ export default function Certifications() {
             {featured.map((c, i) => (
               <Reveal key={c.title} delay={i * 0.06}>
                 <TiltCard
-                  role={c.file ? 'button' : undefined}
-                  tabIndex={c.file ? 0 : undefined}
                   onClick={c.file ? () => setPreview(c) : undefined}
-                  onKeyDown={(e) => c.file && (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), setPreview(c))}
-                  aria-label={c.file ? `View certificate: ${c.title}` : undefined}
                   className={`group flex h-full flex-col overflow-hidden rounded-3xl border border-zinc-200 bg-gradient-to-br from-indigo-500/10 via-white to-sky-500/5 p-6 transition-shadow duration-300 hover:shadow-xl dark:border-zinc-800 dark:from-indigo-500/15 dark:via-zinc-900 dark:to-sky-500/5 ${c.file ? 'cursor-pointer' : ''}`}
                 >
                   <LuAward className="pointer-events-none absolute -right-4 -top-4 text-8xl text-accent opacity-10 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110" />
@@ -49,7 +46,11 @@ export default function Certifications() {
                   <p className="mt-2 text-sm text-zinc-500">{c.issuer} · {c.date}</p>
                   {(c.file || c.verify) && (
                     <div className="mt-4 flex items-center gap-3 border-t border-zinc-200/70 pt-3 text-xs font-medium dark:border-zinc-700/60">
-                      {c.file && <span className="flex items-center gap-1 text-accent"><LuEye /> View</span>}
+                      {c.file && (
+                        <button type="button" onClick={(e) => { e.stopPropagation(); setPreview(c) }} aria-label={`View certificate: ${c.title}`} className="flex items-center gap-1 text-accent hover:underline">
+                          <LuEye /> View
+                        </button>
+                      )}
                       {c.verify && (
                         <a href={c.verify} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} className="flex items-center gap-1 text-emerald-600 hover:underline dark:text-emerald-400">
                           <LuShieldCheck /> Verify
@@ -112,7 +113,13 @@ export default function Certifications() {
         </div>
       </div>
 
-      <AnimatePresence>{preview && <CertificateModal cert={preview} onClose={() => setPreview(null)} />}</AnimatePresence>
+      <AnimatePresence>
+        {preview && (
+          <Suspense fallback={null}>
+            <CertificateModal cert={preview} onClose={() => setPreview(null)} />
+          </Suspense>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
@@ -122,11 +129,7 @@ function CertCard({ cert: c, onOpen }) {
   return (
     <TiltCard
       intensity={5}
-      role={clickable ? 'button' : undefined}
-      tabIndex={clickable ? 0 : undefined}
       onClick={clickable ? onOpen : undefined}
-      onKeyDown={(e) => clickable && (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), onOpen())}
-      aria-label={clickable ? `View certificate: ${c.title}` : undefined}
       className={`group flex h-full flex-col rounded-2xl border border-zinc-200 bg-white p-5 transition-shadow duration-300 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-900/60 ${clickable ? 'cursor-pointer' : ''}`}
     >
       <div className="flex items-start justify-between gap-3">
@@ -139,9 +142,14 @@ function CertCard({ cert: c, onOpen }) {
       <div className="mt-4 flex items-center justify-between border-t border-zinc-100 pt-3 text-xs text-zinc-500 dark:border-zinc-800">
         <span className="flex items-center gap-1.5"><LuBadgeCheck className="text-emerald-500" /> {c.issuer} · {c.date}</span>
         {clickable && (
-          <span className="flex items-center gap-1 font-medium text-accent opacity-70 transition group-hover:translate-x-0.5 group-hover:opacity-100">
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); onOpen() }}
+            aria-label={`View certificate: ${c.title}`}
+            className="flex items-center gap-1 font-medium text-accent opacity-80 transition hover:underline group-hover:translate-x-0.5 group-hover:opacity-100"
+          >
             <LuEye /> View
-          </span>
+          </button>
         )}
       </div>
     </TiltCard>

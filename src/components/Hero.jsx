@@ -10,6 +10,8 @@ const ease = [0.22, 1, 0.36, 1]
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } } }
 const word = { hidden: { y: '110%' }, show: { y: 0, transition: { duration: 0.9, ease } } }
 const fade = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease } } }
+// the tagline (the page's largest text) stays visible and only slides, so it paints right away
+const slide = { hidden: { opacity: 1, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease } } }
 
 const rows = [
   ['name', `"${profile.name}"`, 's'],
@@ -39,6 +41,7 @@ export default function Hero({ ready }) {
               alt="Vaishnavi Bharambe"
               width="32"
               height="32"
+              fetchpriority="high"
               className="h-8 w-8 rounded-full object-cover ring-2 ring-white dark:ring-zinc-900"
             />
             <span className="relative flex h-2 w-2">
@@ -57,14 +60,14 @@ export default function Hero({ ready }) {
                 {li === 1 && <span className="sr-only"> Bharambe</span>}
               </span>
             ))}
-            <span className="block overflow-hidden pb-2 text-zinc-400 dark:text-zinc-500">
+            <span className="block overflow-hidden pb-2 text-zinc-500 dark:text-zinc-400">
               <motion.span variants={word} className="inline-block">
                 <Typewriter words={profile.roles} />
               </motion.span>
             </span>
           </h1>
 
-          <motion.p variants={fade} className="mt-8 max-w-xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+          <motion.p variants={slide} className="mt-8 max-w-xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
             {profile.tagline}
           </motion.p>
 

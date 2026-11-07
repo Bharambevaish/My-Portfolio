@@ -3,8 +3,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: "Geist Mono", ui-monospace, Menlo, Consolas, monospace;
+  --font-sans: "Geist Variable", "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono Variable", "Geist Mono", ui-monospace, Menlo, Consolas, monospace;
   --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
   --color-accent: #4f5bd5;
   --color-accent-soft: #eef0ff;
@@ -32,6 +32,12 @@ body {
 }
 ::selection { background: var(--color-accent); color: white; }
 h1, h2, h3 { text-wrap: balance; }
+
+/* below-the-fold sections skip rendering work until they are near the screen */
+main > section:not(#top) { content-visibility: auto; contain-intrinsic-size: auto 900px; }
+
+/* accessible contrast for muted text in dark mode (WCAG AA) */
+.dark .text-zinc-500 { color: var(--color-zinc-400); }
 :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; border-radius: 6px; }
 
 /* subtle dotted grid used behind the hero */
