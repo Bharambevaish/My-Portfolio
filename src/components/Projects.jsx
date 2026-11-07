@@ -25,7 +25,7 @@ export default function Projects() {
     <section id="projects" className="relative px-6 py-28">
       <div className="mx-auto max-w-6xl">
         <SectionHeading icon="projects" eyebrow="Projects" title="Selected work">
-          Data and AI projects I've built end to end. Click any card for the full story.
+          Data, AI and full-stack projects I've built end to end, all live. Click any card for the full story.
         </SectionHeading>
 
         <div className="mb-10 flex flex-wrap gap-2 md:ml-[220px]">
